@@ -16,15 +16,19 @@ exports.getAllTrips = (req, res) => {
   res.json(readTrips());
 };
 
-exports.getTripById = (req, res) => {
-  const trips = readTrips();
-  const trip = trips.find(t => t.id === req.params.id);
+exports.searchTripsByName = (req, res) => {
+  const { name } = req.query;
 
-  if (!trip) {
-    return res.status(404).json({ message: 'Trip not found' });
+  if (!name) {
+    return res.status(400).json({ error: 'Search term is required' });
   }
 
-  res.json(trip);
+  const trips = readTrips();
+
+  const results = trips.filter(trip =>
+    trip.tripName.toLowerCase().includes(name.toLowerCase())
+    );
+  res.json(results);
 };
 
 exports.createTrip = (req, res) => {
