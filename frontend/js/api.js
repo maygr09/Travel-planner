@@ -23,6 +23,24 @@ export const updateTrip = async (data) => {
   return res.json();
 };
 
+export const updateItem = async (data) => {
+  const res = await fetch(`${API_URL}/item`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  return res.json();
+};
+
+export const deleteItem = async (data) => {
+  const res = await fetch(`${API_URL}/item`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  return res.json();
+};
+
 export const deleteTrip = async (tripName) => {
   const res = await fetch(API_URL, {
     method: 'DELETE',
