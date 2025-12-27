@@ -15,6 +15,6 @@ app.get('/', (req, res) => {
   res.send('Travel Planner API running');
 });
 
-app.listen(PORT, () => {
+app.listen(3001, () => {
   console.log(`Server running on port ${PORT}`);
 });

@@ -149,6 +149,41 @@ exports.activateVersion = (req, res) => {
 
 /* ================= ITEMS ================= */
 
+exports.addItem = (req, res) => {
+  const { tripName, versionId, itemType, item } = req.body;
+
+  if (!tripName || !versionId || !itemType || !item) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  const trips = readTrips();
+
+  const trip = trips.find(t => t.tripName === tripName);
+  if (!trip) {
+    return res.status(404).json({ error: 'Trip not found' });
+  }
+
+  const version = trip.versions.find(v => v.id === versionId);
+  if (!version) {
+    return res.status(404).json({ error: 'Version not found' });
+  }
+
+  if (!Array.isArray(version[itemType])) {
+    return res.status(400).json({ error: 'Invalid item type' });
+  }
+
+  const newItem = {
+    id: `i${Date.now()}`,
+    ...item
+  };
+
+  version[itemType].push(newItem);
+  version.summary = calculateVersionSummary(version, trip);
+
+  writeTrips(trips);
+  res.status(201).json(version);
+};
+
 exports.updateItem = (req, res) => {
 
     const { tripName, versionId, itemType, itemId, updates } = req.body;
