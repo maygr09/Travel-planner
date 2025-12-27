@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trip Planner</title>
+</head>
+<body>
+
+<h1 id="tripTitle">Trip</h1>
+
+<!-- SECTION 1: BASIC INFO -->
+<section>
+  <h2>Basic info</h2>
+  <input id="tripName" placeholder="Trip name" />
+  <input id="peopleCount" type="number" placeholder="People" />
+  <button id="saveBasic">Save basic info</button>
+</section>
+
+<!-- SECTION 2: CURRENCIES -->
+<section>
+  <h2>Currencies</h2>
+  <input id="currencyCode" placeholder="EUR" />
+  <input id="exchangeRate" placeholder="Rate to MXN" />
+  <button id="addCurrency">Add currency</button>
+  <pre id="currencyList"></pre>
+</section>
+
+<!-- SECTION 3: TRANSPORT -->
+<section>
+  <h2>Transport</h2>
+  <input id="transportCost" placeholder="Cost" />
+  <input id="transportCurrency" placeholder="Currency" />
+  <button id="addTransport">Add transport</button>
+</section>
+
+<!-- SECTION 4: ACTIVITIES -->
+<section>
+  <h2>Activities</h2>
+  <input id="activityName" placeholder="Activity" />
+  <input id="activityCost" placeholder="Cost" />
+  <input id="activityCurrency" placeholder="Currency" />
+  <button id="addActivity">Add activity</button>
+</section>
+
+<!-- SECTION 5: SUMMARY -->
+<section>
+  <h2>Summary</h2>
+  <pre id="summary"></pre>
+</section>
+
+<script type="module" src="../js/trip.js"></script>
+</body>
+</html>

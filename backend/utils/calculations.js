@@ -4,7 +4,7 @@ const getExchangeRate = (currencies, code) => {
 };
 
 const sumItems = (items, currencies) => {
-  let totalMXN = 0;
+  let total = 0;
 
   items.forEach(item => {
     if (!item.cost || !item.currencyCode) return;
@@ -12,35 +12,29 @@ const sumItems = (items, currencies) => {
     const rate = getExchangeRate(currencies, item.currencyCode);
     if (!rate) return;
 
-    totalMXN += item.cost * rate;
+    total += item.cost * rate;
   });
 
-  return totalMXN;
+  return total;
 };
 
-const calculateSummary = (trip) => {
+const calculateVersionSummary = (version, trip) => {
   const currencies = trip.currencies || [];
 
-  const transportTotal = sumItems(trip.transports || [], currencies);
-  const activitiesTotal = sumItems(trip.activities || [], currencies);
-  const mealsTotal = sumItems(trip.meals || [], currencies);
+  const transport = sumItems(version.transports || [], currencies);
+  const activities = sumItems(version.activities || [], currencies);
+  const meals = sumItems(version.meals || [], currencies);
 
-  const totalMXN = transportTotal + activitiesTotal + mealsTotal;
+  const totalMXN = transport + activities + meals;
   const perPersonMXN = trip.peopleCount
     ? totalMXN / trip.peopleCount
     : totalMXN;
 
   return {
-    breakdown: {
-      transport: transportTotal,
-      activities: activitiesTotal,
-      meals: mealsTotal
-    },
+    breakdown: { transport, activities, meals },
     totalMXN,
     perPersonMXN
   };
 };
 
-module.exports = {
-  calculateSummary
-};
+module.exports = { calculateVersionSummary };
