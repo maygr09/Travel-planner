@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const tripsRoutes = require('./routes/trips.routes');
+const tripsRoutes = require('./routes/trips_routes');
 
 const app = express();
 const PORT = 3001;
