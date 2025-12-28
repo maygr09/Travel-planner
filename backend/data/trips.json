@@ -56,5 +56,23 @@
         }
       }
     ]
+  },
+  {
+    "id": "1766889273997",
+    "createdAt": "2025-12-28T02:34:33.997Z",
+    "tripName": "Islandia 2026",
+    "peopleCount": 5,
+    "currencies": [],
+    "versions": [
+      {
+        "id": "v1",
+        "name": "Base version",
+        "isActive": true,
+        "transports": [],
+        "activities": [],
+        "meals": [],
+        "summary": {}
+      }
+    ]
   }
 ]
