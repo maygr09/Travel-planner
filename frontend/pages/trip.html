@@ -1,52 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Trip Planner</title>
+  <meta charset="UTF-8" />
+  <title>Trip</title>
+  <style>
+    body { font-family: Arial; max-width: 900px; margin: auto; }
+    section { margin-bottom: 30px; }
+    .item { border-bottom: 1px solid #ddd; padding: 10px 0; }
+    a { color: blue; text-decoration: none; }
+  </style>
 </head>
 <body>
 
 <h1 id="tripTitle">Trip</h1>
+<p id="people"></p>
+<p id="activeVersion"></p>
 
-<!-- SECTION 1: BASIC INFO -->
-<section>
-  <h2>Basic info</h2>
-  <input id="tripName" placeholder="Trip name" />
-  <input id="peopleCount" type="number" placeholder="People" />
-  <button id="saveBasic">Save basic info</button>
-</section>
+<hr />
 
-<!-- SECTION 2: CURRENCIES -->
 <section>
-  <h2>Currencies</h2>
-  <input id="currencyCode" placeholder="EUR" />
-  <input id="exchangeRate" placeholder="Rate to MXN" />
-  <button id="addCurrency">Add currency</button>
-  <pre id="currencyList"></pre>
-</section>
-
-<!-- SECTION 3: TRANSPORT -->
-<section>
-  <h2>Transport</h2>
-  <input id="transportCost" placeholder="Cost" />
-  <input id="transportCurrency" placeholder="Currency" />
-  <button id="addTransport">Add transport</button>
-</section>
-<section>
-  <h2>Transport</h2>
+  <h2>Transports</h2>
   <div id="transportList"></div>
 </section>
 
-
-<!-- SECTION 4: ACTIVITIES -->
 <section>
   <h2>Activities</h2>
-  <input id="activityName" placeholder="Activity" />
-  <input id="activityCost" placeholder="Cost" />
-  <input id="activityCurrency" placeholder="Currency" />
-  <button id="addActivity">Add activity</button>
+  <div id="activityList"></div>
 </section>
 
-<!-- SECTION 5: SUMMARY -->
+<section>
+  <h2>Meals</h2>
+  <div id="mealList"></div>
+</section>
+
+<hr />
+
 <section>
   <h2>Summary</h2>
   <pre id="summary"></pre>

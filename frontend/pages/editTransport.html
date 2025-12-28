@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit transport</title>
+</head>
+<body>
+
+<h1 id="title">Transport</h1>
+
+<section>
+  <input id="type" placeholder="Type (flight, train, bus, ferry)" />
+  <input id="flightNumber" placeholder="Flight / service number" />
+
+  <input id="from" placeholder="From" />
+  <input id="to" placeholder="To" />
+
+  <label>Departure</label><br />
+  <input type="date" id="departureDate" />
+  <input type="time" id="departureTime" />
+
+  <br /><br />
+
+  <label>Arrival</label><br />
+  <input type="date" id="arrivalDate" />
+  <input type="time" id="arrivalTime" />
+
+  <br /><br />
+
+  <input id="confirmationCode" placeholder="Confirmation code" />
+  <input id="bookingUrl" placeholder="Booking URL" />
+
+  <br /><br />
+
+  <input type="number" id="cost" placeholder="Cost" />
+  <input id="currencyCode" placeholder="Currency" />
+</section>
+
+<hr />
+
+<button id="save" type="button">Save</button>
+<button id="cancel" type="button">Cancel</button>
+
+<script type="module" src="../js/edit-transport.js"></script>
+</body>
+</html>

@@ -1,1 +1,60 @@
-[]
+[
+  {
+    "id": "1766873570157",
+    "createdAt": "2025-12-27T22:12:50.157Z",
+    "tripName": "Escocia 2026",
+    "peopleCount": 3,
+    "currencies": [
+      {
+        "code": "GBM",
+        "exchangeToMXN": 25
+      }
+    ],
+    "versions": [
+      {
+        "id": "v1",
+        "name": "Base version",
+        "isActive": true,
+        "transports": [
+          {
+            "id": "i1766879643240",
+            "type": "flight",
+            "flightNumber": "AM3",
+            "from": "MEX",
+            "to": "CDG",
+            "departureDate": "2026-02-16",
+            "departureTime": "22:25",
+            "arrivalDate": "2026-02-17",
+            "arrivalTime": "16:00",
+            "cost": 0,
+            "currencyCode": "MXN"
+          },
+          {
+            "id": "i1766879934365",
+            "type": "flight",
+            "flightNumber": "AF1687",
+            "from": "CDG",
+            "to": "EDI",
+            "departureDate": "2026-02-20",
+            "departureTime": "11:40",
+            "arrivalDate": "2026-02-20",
+            "arrivalTime": "14:35",
+            "cost": 169,
+            "currencyCode": "EUR"
+          }
+        ],
+        "activities": [],
+        "meals": [],
+        "summary": {
+          "breakdown": {
+            "transport": 0,
+            "activities": 0,
+            "meals": 0
+          },
+          "totalMXN": 0,
+          "perPersonMXN": 0
+        }
+      }
+    ]
+  }
+]

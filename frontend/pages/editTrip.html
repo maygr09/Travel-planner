@@ -1,14 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit trip</title>
+</head>
 <body>
-  <h2>Edit Trip</h2>
 
-  <input id="tripName" placeholder="Trip name" />
-  <input id="peopleCount" type="number" placeholder="New people count" />
-  <button id="updateBtn">Update</button>
+<h1 id="tripTitle">Edit trip</h1>
 
-  <pre id="result"></pre>
+<!-- VERSIONS -->
+<section>
+  <h2>Version</h2>
+  <select id="versionSelect"></select>
+  <button id="duplicateVersion">Duplicate version</button>
+  <button id="activateVersion">Set as active</button>
+</section>
 
-  <script type="module" src="../js/editTrip.js"></script>
+<hr />
+
+<!-- BASIC INFO -->
+<section>
+  <h2>Basic info</h2>
+  <input id="peopleCount" type="number" placeholder="People count" />
+  <button id="saveBasic">Save</button>
+</section>
+
+<hr />
+
+<!-- CURRENCIES -->
+<section>
+  <h2>Currencies</h2>
+
+  <input id="currencyCode" placeholder="EUR" />
+  <input id="exchangeRate" type="number" placeholder="Rate to MXN" />
+  <button id="addCurrency">Add currency</button>
+
+  <ul id="currencyList"></ul>
+</section>
+
+<hr />
+
+<!-- TRANSPORTS -->
+<section>
+  <h2>Transports</h2>
+  <button id="addTransport">Add transport</button>
+  <div id="transportList"></div>
+</section>
+
+<hr />
+
+<!-- ACTIVITIES -->
+<section>
+  <h2>Activities</h2>
+  <input id="activityName" placeholder="Activity name" />
+  <input id="activityCost" type="number" placeholder="Cost" />
+  <input id="activityCurrency" placeholder="Currency" />
+  <button id="addActivity">Add activity</button>
+  <div id="activityList"></div>
+</section>
+
+<hr />
+
+<!-- MEALS -->
+<section>
+  <h2>Meals</h2>
+  <input id="mealName" placeholder="Meal" />
+  <input id="mealCost" type="number" placeholder="Cost" />
+  <input id="mealCurrency" placeholder="Currency" />
+  <button id="addMeal">Add meal</button>
+  <div id="mealList"></div>
+</section>
+
+
+<!-- MINI SUMMARY -->
+<section>
+  <h2>Summary (current version)</h2>
+  <pre id="summary"></pre>
+</section>
+
+<!-- NAVIGATION -->
+<section>
+  <button id="goToTrip">View final trip</button>
+</section>
+
+<script type="module" src="../js/edit-trip.js"></script>
 </body>
 </html>

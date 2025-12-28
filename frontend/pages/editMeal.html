@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit meal</title>
+</head>
+<body>
+
+<h1 id="title">Meal</h1>
+
+<section>
+  <input id="name" placeholder="Meal / Restaurant" />
+
+  <label>Start</label><br />
+  <input type="date" id="startDate" />
+  <input type="time" id="startTime" />
+
+  <br /><br />
+
+  <label>End</label><br />
+  <input type="date" id="endDate" />
+  <input type="time" id="endTime" />
+
+  <br /><br />
+
+  <input id="confirmationCode" placeholder="Confirmation code" />
+  <input id="bookingUrl" placeholder="Booking URL" />
+
+  <br /><br />
+
+  <input type="number" id="cost" placeholder="Cost" />
+  <input id="currencyCode" placeholder="Currency" />
+</section>
+
+<hr />
+
+<button id="save" type="button">Save</button>
+<button id="cancel" type="button">Cancel</button>
+
+<script type="module" src="../js/edit-meal.js"></script>
+</body>
+</html>

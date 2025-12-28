@@ -1,51 +1,68 @@
 const API_URL = 'http://localhost:3001/api/trips';
 
-export const createTrip = async (data) => {
-  const res = await fetch(API_URL, {
+/* ================= HELPER ================= */
+const request = async (url, options = {}) => {
+  const res = await fetch(url, {
+    headers: { 'Content-Type': 'application/json' },
+    ...options
+  });
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}));
+    throw new Error(error.error || 'API error');
+  }
+
+  return res.json();
+};
+
+/* ================= TRIPS ================= */
+
+export const searchTrips = (name) => {
+  return request(
+    `${API_URL}/search?name=${encodeURIComponent(name)}`
+  );
+};
+
+export const createTrip = (data) => {
+  return request(API_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });
-  return res.json();
 };
 
-export const searchTrips = async (name) => {
-  const res = await fetch(`${API_URL}/search?name=${name}`);
-  return res.json();
-};
-
-export const updateTrip = async (data) => {
-  const res = await fetch(API_URL, {
+export const updateTrip = (data) => {
+  return request(API_URL, {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });
-  return res.json();
 };
 
-export const updateItem = async (data) => {
-  const res = await fetch(`${API_URL}/item`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  return res.json();
-};
-
-export const deleteItem = async (data) => {
-  const res = await fetch(`${API_URL}/item`, {
+export const deleteTrip = (tripName) => {
+  return request(API_URL, {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  return res.json();
-};
-
-export const deleteTrip = async (tripName) => {
-  const res = await fetch(API_URL, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ tripName })
   });
-  return res.json();
+};
+
+/* ================= ITEMS ================= */
+
+export const addItem = (data) => {
+  return request(`${API_URL}/item`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  });
+};
+
+export const updateItem = (data) => {
+  return request(`${API_URL}/item`, {
+    method: 'PUT',
+    body: JSON.stringify(data)
+  });
+};
+
+export const deleteItem = (data) => {
+  return request(`${API_URL}/item`, {
+    method: 'DELETE',
+    body: JSON.stringify(data)
+  });
 };
