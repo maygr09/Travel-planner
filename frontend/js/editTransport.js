@@ -96,13 +96,13 @@ document.getElementById('save').addEventListener('click', async () => {
   }
 
   window.location.href =
-    `edit-trip.html?trip=${encodeURIComponent(tripName)}`;
+    `editTrip.html?trip=${encodeURIComponent(tripName)}`;
 });
 
 /* ================= CANCEL ================= */
 document.getElementById('cancel').addEventListener('click', () => {
   window.location.href =
-    `edit-trip.html?trip=${encodeURIComponent(tripName)}`;
+    `editTrip.html?trip=${encodeURIComponent(tripName)}`;
 });
 
 /* ================= INIT ================= */

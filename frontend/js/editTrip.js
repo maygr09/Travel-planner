@@ -139,7 +139,7 @@ const renderTransports = () => {
     // EDIT → otra página
     div.querySelector('.edit').onclick = () => {
       window.location.href =
-        `edit-transport.html?trip=${encodeURIComponent(currentTrip.tripName)}&version=${currentVersion.id}&item=${t.id}`;
+        `editTransport.html?trip=${encodeURIComponent(currentTrip.tripName)}&version=${currentVersion.id}&item=${t.id}`;
     };
 
     // DELETE
@@ -164,7 +164,7 @@ const renderTransports = () => {
 
 document.getElementById('addTransport').addEventListener('click', () => {
   window.location.href =
-    `edit-transport.html?trip=${encodeURIComponent(currentTrip.tripName)}&version=${currentVersion.id}`;
+    `editTransport.html?trip=${encodeURIComponent(currentTrip.tripName)}&version=${currentVersion.id}`;
 });
 
 const renderActivities = () => {

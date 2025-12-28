@@ -16,5 +16,5 @@ document.getElementById('createBtn').addEventListener('click', async () => {
 
   // después de crear → editar
   window.location.href =
-    `edit-trip.html?trip=${encodeURIComponent(tripName)}`;
+    `editTrip.html?trip=${encodeURIComponent(tripName)}`;
 });
