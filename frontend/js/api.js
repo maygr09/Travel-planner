@@ -1,4 +1,5 @@
 const API_URL = 'http://localhost:3001/api/trips';
+console.log('API.JS LOADED — VERSION WITH activateVersion');
 
 /* ================= HELPER ================= */
 const request = async (url, options = {}) => {
@@ -63,6 +64,22 @@ export const updateItem = (data) => {
 export const deleteItem = (data) => {
   return request(`${API_URL}/item`, {
     method: 'DELETE',
+    body: JSON.stringify(data)
+  });
+};
+
+/* ================= VERSIONS ================= */
+
+export const duplicateVersion = (data) => {
+  return request(`${API_URL}/version/duplicate`, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  });
+};
+
+export const activateVersion = (data) => {
+  return request(`${API_URL}/version/activate`, {
+    method: 'PUT',
     body: JSON.stringify(data)
   });
 };

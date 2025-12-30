@@ -8,6 +8,14 @@
       {
         "code": "GBM",
         "exchangeToMXN": 25
+      },
+      {
+        "code": "EUR",
+        "exchangeToMXN": 22
+      },
+      {
+        "code": "USD",
+        "exchangeToMXN": 18.5
       }
     ],
     "versions": [
@@ -15,6 +23,110 @@
         "id": "v1",
         "name": "Base version",
         "isActive": true,
+        "transports": [
+          {
+            "id": "i1766879643240",
+            "type": "Flight",
+            "flightNumber": "AM3",
+            "from": "MEX",
+            "to": "CDG",
+            "departureDate": "2026-02-16",
+            "departureTime": "22:25",
+            "arrivalDate": "2026-02-17",
+            "arrivalTime": "16:00",
+            "cost": 0,
+            "currencyCode": "MXN",
+            "confirmationCode": "",
+            "bookingUrl": ""
+          },
+          {
+            "id": "i1766879934365",
+            "type": "Flight",
+            "flightNumber": "AF1687",
+            "from": "CDG",
+            "to": "EDI",
+            "departureDate": "2026-02-20",
+            "departureTime": "11:40",
+            "arrivalDate": "2026-02-20",
+            "arrivalTime": "14:35",
+            "cost": 169,
+            "currencyCode": "EUR",
+            "confirmationCode": "",
+            "bookingUrl": ""
+          },
+          {
+            "id": "i1766892791315",
+            "type": "Bus",
+            "flightNumber": "Flixbus",
+            "from": "Edinburgh",
+            "to": "Inverness",
+            "departureDate": "2026-02-20",
+            "departureTime": "13:15",
+            "arrivalDate": "2026-02-20",
+            "arrivalTime": "17:00",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 24,
+            "currencyCode": "EUR"
+          }
+        ],
+        "activities": [
+          {
+            "id": "i1766896740839",
+            "name": "Disneyland Paris",
+            "cost": 225,
+            "currencyCode": "EUR"
+          },
+          {
+            "id": "i1766986676126",
+            "name": "Tour 2",
+            "confirmationCode": "123456",
+            "cost": 300,
+            "currencyCode": "MXN"
+          }
+        ],
+        "meals": [
+          {
+            "id": "i1766986658412",
+            "name": "Comida",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 150,
+            "currencyCode": "mxn",
+            "startDate": "",
+            "startTime": "",
+            "endDate": "",
+            "endTime": ""
+          }
+        ],
+        "summary": {
+          "breakdown": {
+            "transport": 4246,
+            "activities": 4950,
+            "meals": 0,
+            "accommodations": 7992
+          },
+          "totalMXN": 17188,
+          "perPersonMXN": 5729.333333333333
+        },
+        "accommodations": [
+          {
+            "id": "i1766900635276",
+            "name": "Ibis budget Hotel Edinburgh Park",
+            "city": "Edinburgh",
+            "checkInDate": "2026-02-19",
+            "checkOutDate": "2026-02-22",
+            "cost": 432,
+            "currencyCode": "USD",
+            "bookingCode": "",
+            "bookingUrl": ""
+          }
+        ]
+      },
+      {
+        "id": "v2",
+        "name": "Opcion B",
+        "isActive": false,
         "transports": [
           {
             "id": "i1766879643240",
@@ -55,7 +167,8 @@
           "perPersonMXN": 0
         }
       }
-    ]
+    ],
+    "updatedAt": "2025-12-29T04:55:50.704Z"
   },
   {
     "id": "1766889273997",

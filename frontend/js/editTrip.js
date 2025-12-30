@@ -1,7 +1,8 @@
 import {
   searchTrips,
   updateTrip,
-  createVersion,
+  addItem,
+  deleteItem,
   duplicateVersion,
   activateVersion
 } from './api.js';
@@ -40,15 +41,18 @@ const loadTrip = async () => {
   renderTransports();
   renderActivities();
   renderMeals();
+  renderAccommodations();
   renderSummary();
+  renderVersionComparison();
 };
 
-/* ================= RENDER ================= */
+/* ================= RENDER HEADER ================= */
 const renderHeader = () => {
   document.getElementById('tripTitle').textContent =
     `Edit trip: ${currentTrip.tripName}`;
 };
 
+/* ================= VERSIONS ================= */
 const renderVersions = () => {
   const select = document.getElementById('versionSelect');
   select.innerHTML = '';
@@ -64,11 +68,38 @@ const renderVersions = () => {
   currentVersion = currentTrip.versions.find(v => v.id === select.value);
 };
 
+document.getElementById('versionSelect').addEventListener('change', (e) => {
+  currentVersion = currentTrip.versions.find(v => v.id === e.target.value);
+  renderSummary();
+  renderTransports();
+  renderActivities();
+  renderMeals();
+  renderAccommodations();
+});
+
+/* ================= BASIC INFO ================= */
 const renderBasicInfo = () => {
   document.getElementById('peopleCount').value =
     currentTrip.peopleCount || 1;
 };
 
+document.getElementById('saveBasic').addEventListener('click', async () => {
+  const peopleCount = Number(document.getElementById('peopleCount').value);
+
+  currentTrip = await updateTrip({
+    tripName: currentTrip.tripName,
+    updates: { peopleCount }
+  });
+
+  currentVersion = currentTrip.versions.find(v => v.isActive);
+
+  renderBasicInfo();
+  renderSummary();
+  renderVersionComparison();
+});
+
+
+/* ================= CURRENCIES ================= */
 const renderCurrencies = () => {
   const list = document.getElementById('currencyList');
   list.innerHTML = '';
@@ -119,6 +150,7 @@ document.getElementById('addCurrency').addEventListener('click', async () => {
   renderSummary();
 });
 
+/* ================= TRANSPORTS ================= */
 const renderTransports = () => {
   const list = document.getElementById('transportList');
   list.innerHTML = '';
@@ -136,13 +168,17 @@ const renderTransports = () => {
       <button class="delete">Delete</button>
     `;
 
-    // EDIT → otra página
-    div.querySelector('.edit').onclick = () => {
-      window.location.href =
-        `editTransport.html?trip=${encodeURIComponent(currentTrip.tripName)}&version=${currentVersion.id}&item=${t.id}`;
-    };
+   div.querySelector('.edit').addEventListener('click', () => {
+  sessionStorage.setItem(
+    'editingTransport',
+    JSON.stringify(t)
+  );
 
-    // DELETE
+  window.location.href =
+    `editTransport.html?trip=${currentTrip.tripName}&version=${currentVersion.id}&item=${t.id}`;
+});
+
+
     div.querySelector('.delete').onclick = async () => {
       if (!confirm('Delete transport?')) return;
 
@@ -162,11 +198,64 @@ const renderTransports = () => {
   });
 };
 
-document.getElementById('addTransport').addEventListener('click', () => {
-  window.location.href =
-    `editTransport.html?trip=${encodeURIComponent(currentTrip.tripName)}&version=${currentVersion.id}`;
-});
+document.getElementById('addTransport')
+  ?.addEventListener('click', async () => {
 
+    const type = document.getElementById('tType').value.trim();
+    const flightNumber = document.getElementById('tFlightNumber').value.trim();
+    const from = document.getElementById('tFrom').value.trim();
+    const to = document.getElementById('tTo').value.trim();
+    const departureDate = document.getElementById('tDepartureDate').value;
+    const departureTime = document.getElementById('tDepartureTime').value;
+    const arrivalDate = document.getElementById('tArrivalDate').value;
+    const arrivalTime = document.getElementById('tArrivalTime').value;
+    const confirmationCode = document.getElementById('tConfirmationCode').value.trim();
+    const bookingUrl = document.getElementById('tBookingUrl').value.trim();
+    const cost = Number(document.getElementById('tCost').value);
+    const currencyCode = document.getElementById('tCurrency').value.trim();
+
+    if (!type || !from || !to || !departureDate || !departureTime || !arrivalDate || !arrivalTime) {
+      alert('Missing required fields');
+      return;
+    }
+
+    const version = await addItem({
+      tripName: currentTrip.tripName,
+      versionId: currentVersion.id,
+      itemType: 'transports',
+      item: {
+        type,
+        flightNumber,
+        from,
+        to,
+        departureDate,
+        departureTime,
+        arrivalDate,
+        arrivalTime,
+        confirmationCode,
+        bookingUrl,
+        cost,
+        currencyCode
+      }
+    });
+
+    currentVersion = version;
+
+    // limpiar form
+    [
+      'tType','tFlightNumber','tFrom','tTo',
+      'tDepartureDate','tDepartureTime',
+      'tArrivalDate','tArrivalTime',
+      'tConfirmationCode','tBookingUrl',
+      'tCost','tCurrency'
+    ].forEach(id => document.getElementById(id).value = '');
+
+    renderTransports();
+    renderSummary();
+  });
+
+
+/* ================= ACTIVITIES ================= */
 const renderActivities = () => {
   const list = document.getElementById('activityList');
   list.innerHTML = '';
@@ -182,30 +271,16 @@ const renderActivities = () => {
       <button class="delete">Delete</button>
     `;
 
-    // EDIT
-    div.querySelector('.edit').onclick = async () => {
-      const name = prompt('Name', a.name);
-      const cost = prompt('Cost', a.cost);
-      const currencyCode = prompt('Currency', a.currencyCode);
+   div.querySelector('.edit').onclick = async () => {
+  sessionStorage.setItem(
+    'editingActivity',
+    JSON.stringify(a)
+  );
 
-      const version = await updateItem({
-        tripName: currentTrip.tripName,
-        versionId: currentVersion.id,
-        itemType: 'activities',
-        itemId: a.id,
-        updates: {
-          name,
-          cost: Number(cost),
-          currencyCode
-        }
-      });
+  window.location.href =
+    `editActivity.html?trip=${currentTrip.tripName}&version=${currentVersion.id}&item=${a.id}`;
+};
 
-      currentVersion = version;
-      renderActivities();
-      renderSummary();
-    };
-
-    // DELETE
     div.querySelector('.delete').onclick = async () => {
       if (!confirm('Delete activity?')) return;
 
@@ -225,30 +300,44 @@ const renderActivities = () => {
   });
 };
 
-document.getElementById('addActivity').addEventListener('click', async () => {
-  const name = document.getElementById('activityName').value.trim();
-  const cost = Number(document.getElementById('activityCost').value);
-  const currencyCode = document.getElementById('activityCurrency').value.trim();
+document.getElementById('addActivity')
+  .addEventListener('click', async () => {
 
-  if (!name || !cost || !currencyCode) return;
+    const name = document.getElementById('activityName').value.trim();
+    const confirmationCode = document.getElementById('activityConfirmationCode').value.trim();
+    const cost = Number(document.getElementById('activityCost').value);
+    const currencyCode = document.getElementById('activityCurrency').value.trim();
 
-  const version = await addItem({
-    tripName: currentTrip.tripName,
-    versionId: currentVersion.id,
-    itemType: 'activities',
-    item: { name, cost, currencyCode }
+    if (!name || !cost || !currencyCode) {
+      alert('Missing required fields');
+      return;
+    }
+
+    const version = await addItem({
+      tripName: currentTrip.tripName,
+      versionId: currentVersion.id,
+      itemType: 'activities',
+      item: {
+        name,
+        confirmationCode,
+        cost,
+        currencyCode
+      }
+    });
+
+    currentVersion = version;
+
+    document.getElementById('activityName').value = '';
+    document.getElementById('activityConfirmationCode').value = '';
+    document.getElementById('activityCost').value = '';
+    document.getElementById('activityCurrency').value = '';
+
+    renderActivities();
+    renderSummary();
   });
 
-  currentVersion = version;
 
-  document.getElementById('activityName').value = '';
-  document.getElementById('activityCost').value = '';
-  document.getElementById('activityCurrency').value = '';
-
-  renderActivities();
-  renderSummary();
-});
-
+/* ================= MEALS ================= */
 const renderMeals = () => {
   const list = document.getElementById('mealList');
   list.innerHTML = '';
@@ -264,30 +353,17 @@ const renderMeals = () => {
       <button class="delete">Delete</button>
     `;
 
-    // EDIT
-    div.querySelector('.edit').onclick = async () => {
-      const name = prompt('Name', m.name);
-      const cost = prompt('Cost', m.cost);
-      const currencyCode = prompt('Currency', m.currencyCode);
+   div.querySelector('.edit').addEventListener('click', () => {
+  sessionStorage.setItem(
+    'editingMeal',
+    JSON.stringify(m)
+  );
 
-      const version = await updateItem({
-        tripName: currentTrip.tripName,
-        versionId: currentVersion.id,
-        itemType: 'meals',
-        itemId: m.id,
-        updates: {
-          name,
-          cost: Number(cost),
-          currencyCode
-        }
-      });
+  window.location.href =
+    `editMeal.html?trip=${currentTrip.tripName}&version=${currentVersion.id}&item=${m.id}`;
+});
 
-      currentVersion = version;
-      renderMeals();
-      renderSummary();
-    };
 
-    // DELETE
     div.querySelector('.delete').onclick = async () => {
       if (!confirm('Delete meal?')) return;
 
@@ -307,30 +383,199 @@ const renderMeals = () => {
   });
 };
 
-document.getElementById('addMeal').addEventListener('click', async () => {
-  const name = document.getElementById('mealName').value.trim();
-  const cost = Number(document.getElementById('mealCost').value);
-  const currencyCode = document.getElementById('mealCurrency').value.trim();
+document.getElementById('addMeal')
+  .addEventListener('click', async () => {
 
-  if (!name || !cost || !currencyCode) return;
+    const name = document.getElementById('mealName').value.trim();
+    const confirmationCode = document.getElementById('mealConfirmationCode').value.trim();
+    const bookingUrl = document.getElementById('mealBookingUrl').value.trim();
+    const cost = Number(document.getElementById('mealCost').value);
+    const currencyCode = document.getElementById('mealCurrency').value.trim();
 
-  const version = await addItem({
-    tripName: currentTrip.tripName,
-    versionId: currentVersion.id,
-    itemType: 'meals',
-    item: { name, cost, currencyCode }
+    if (!name) {
+      alert('Missing required fields');
+      return;
+    }
+
+    const version = await addItem({
+      tripName: currentTrip.tripName,
+      versionId: currentVersion.id,
+      itemType: 'meals',
+      item: {
+        name,
+        confirmationCode,
+        bookingUrl,
+        cost,
+        currencyCode
+      }
+    });
+
+    currentVersion = version;
+
+    document.getElementById('mealName').value = '';
+    document.getElementById('mealConfirmationCode').value = '';
+    document.getElementById('mealBookingUrl').value = '';
+    document.getElementById('mealCost').value = '';
+    document.getElementById('mealCurrency').value = '';
+
+    renderMeals();
+    renderSummary();
   });
 
-  currentVersion = version;
 
-  document.getElementById('mealName').value = '';
-  document.getElementById('mealCost').value = '';
-  document.getElementById('mealCurrency').value = '';
+/* ================= ACCOMMODATIONS ================= */
+const renderAccommodations = () => {
+  const list = document.getElementById('accommodationList');
+  list.innerHTML = '';
 
-  renderMeals();
-  renderSummary();
+  if (!currentVersion.accommodations.length) {
+    list.innerHTML = '<p>No accommodations yet</p>';
+    return;
+  }
+
+  currentVersion.accommodations.forEach(a => {
+    const div = document.createElement('div');
+
+    div.innerHTML = `
+      <strong>${a.name}</strong> (${a.city || ''})<br/>
+      ${a.checkInDate} → ${a.checkOutDate}<br/>
+      ${a.cost} ${a.currencyCode}<br/>
+      ${a.bookingCode ? `Code: ${a.bookingCode}<br/>` : ''}
+      ${a.bookingUrl ? `<a href="${a.bookingUrl}" target="_blank">Booking</a><br/>` : ''}
+      <button class="edit">Edit</button>
+      <button class="delete">Delete</button>
+    `;
+
+    div.querySelector('.edit').addEventListener('click', () => {
+  sessionStorage.setItem(
+    'editingAccommodation',
+    JSON.stringify(a)
+  );
+
+  window.location.href =
+    `editAccommodation.html?trip=${currentTrip.tripName}&version=${currentVersion.id}&item=${a.id}`;
 });
 
+
+    div.querySelector('.delete').onclick = async () => {
+      if (!confirm('Delete accommodation?')) return;
+
+      const version = await deleteItem({
+        tripName: currentTrip.tripName,
+        versionId: currentVersion.id,
+        itemType: 'accommodations',
+        itemId: a.id
+      });
+
+      currentVersion = version;
+      renderAccommodations();
+      renderSummary();
+    };
+
+    list.appendChild(div);
+  });
+};
+
+document.getElementById('addAccommodation')
+  .addEventListener('click', async () => {
+
+    const name = document.getElementById('accName').value.trim();
+    const city = document.getElementById('accCity').value.trim();
+    const checkInDate = document.getElementById('accCheckIn').value;
+    const checkOutDate = document.getElementById('accCheckOut').value;
+    const cost = Number(document.getElementById('accCost').value);
+    const currencyCode = document.getElementById('accCurrency').value.trim();
+    const bookingCode = document.getElementById('accBookingCode').value.trim();
+    const bookingUrl = document.getElementById('accBookingUrl').value.trim();
+
+    if (!name || !checkInDate || !checkOutDate || !cost || !currencyCode) {
+      alert('Missing required fields');
+      return;
+    }
+
+    const version = await addItem({
+      tripName: currentTrip.tripName,
+      versionId: currentVersion.id,
+      itemType: 'accommodations',
+      item: {
+        name,
+        city,
+        checkInDate,
+        checkOutDate,
+        cost,
+        currencyCode,
+        bookingCode,
+        bookingUrl
+      }
+    });
+
+    currentVersion = version;
+
+    document.getElementById('accName').value = '';
+    document.getElementById('accCity').value = '';
+    document.getElementById('accCheckIn').value = '';
+    document.getElementById('accCheckOut').value = '';
+    document.getElementById('accCost').value = '';
+    document.getElementById('accCurrency').value = '';
+    document.getElementById('accBookingCode').value = '';
+    document.getElementById('accBookingUrl').value = '';
+
+    renderAccommodations();
+    renderSummary();
+  });
+
+
+/* ================= SUMMARY ================= */
+const renderSummary = () => {
+  document.getElementById('summary').textContent =
+    JSON.stringify(currentVersion.summary, null, 2);
+};
+
+/* ================= VERSION COMPARISON ================= */
+const renderVersionComparison = () => {
+  const container = document.getElementById('versionsCompare');
+  container.innerHTML = '';
+
+  currentTrip.versions.forEach(v => {
+    const div = document.createElement('div');
+    div.style.border = '1px solid #ccc';
+    div.style.padding = '10px';
+    div.style.marginBottom = '10px';
+
+    const summary = v.summary || {};
+
+    div.innerHTML = `
+      <h3>${v.name} ${v.isActive ? '(Active)' : ''}</h3>
+      <p>Total MXN: ${summary.totalMXN || 0}</p>
+      <p>Per person: ${summary.perPersonMXN || 0}</p>
+      ${
+        v.isActive
+          ? '<strong>Active version</strong>'
+          : '<button class="activate">Activate</button>'
+      }
+    `;
+
+    if (!v.isActive) {
+      div.querySelector('.activate').onclick = async () => {
+        await activateVersion({
+          tripName: currentTrip.tripName,
+          versionId: v.id
+        });
+
+        currentTrip.versions.forEach(ver =>
+          (ver.isActive = ver.id === v.id)
+        );
+
+        currentVersion = v;
+        loadTrip();
+      };
+    }
+
+    container.appendChild(div);
+  });
+};
+
+/* ================= DUPLICATE VERSION ================= */
 document.getElementById('duplicateVersion').addEventListener('click', async () => {
   const name = prompt('New version name');
   if (!name) return;
@@ -343,31 +588,10 @@ document.getElementById('duplicateVersion').addEventListener('click', async () =
 
   currentTrip.versions.push(newVersion);
   renderVersions();
+  renderVersionComparison();
 });
 
-const renderSummary = () => {
-  document.getElementById('summary').textContent =
-    JSON.stringify(currentVersion.summary, null, 2);
-};
-
-/* ================= EVENTS (BASE) ================= */
-
-document.getElementById('versionSelect').addEventListener('change', (e) => {
-  currentVersion = currentTrip.versions.find(v => v.id === e.target.value);
-  renderSummary();
-});
-
-document.getElementById('saveBasic').addEventListener('click', async () => {
-  const peopleCount = Number(document.getElementById('peopleCount').value);
-
-  currentTrip = await updateTrip({
-    tripName: currentTrip.tripName,
-    updates: { peopleCount }
-  });
-
-  renderSummary();
-});
-
+/* ================= NAV ================= */
 document.getElementById('goToTrip').addEventListener('click', () => {
   window.location.href =
     `trip.html?trip=${encodeURIComponent(currentTrip.tripName)}`;

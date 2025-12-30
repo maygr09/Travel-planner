@@ -28,6 +28,7 @@ const loadTrip = async () => {
   renderTransports();
   renderActivities();
   renderMeals();
+  renderAccommodations();
   renderSummary();
 };
 
@@ -116,6 +117,32 @@ const renderMeals = () => {
       ${m.cost} ${m.currencyCode}<br/>
       ${m.confirmationCode ? `Confirmation: ${m.confirmationCode}<br/>` : ''}
       ${m.bookingUrl ? `<a href="${m.bookingUrl}" target="_blank">Booking</a>` : ''}
+    `;
+
+    list.appendChild(div);
+  });
+};
+
+/* ================= ACCOMMODATIONS ================= */
+const renderAccommodations = () => {
+  const list = document.getElementById('accommodationList');
+  list.innerHTML = '';
+
+  if (!currentVersion.accommodations.length) {
+    list.textContent = 'No accommodations';
+    return;
+  }
+
+  currentVersion.accommodations.forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'item';
+
+    div.innerHTML = `
+      <strong>${acc.name}</strong><br/> (${acc.city || ''})<br/>
+      ${acc.checkInDate} → ${acc.checkOutDate}<br/>
+      ${acc.cost} ${acc.currencyCode}<br/>
+      ${acc.bookingCode ? `Code: ${acc.bookingCode}<br/>` : ''}
+      ${acc.bookingUrl ? `<a href="${acc.bookingUrl}" target="_blank">Booking</a>` : ''}
     `;
 
     list.appendChild(div);

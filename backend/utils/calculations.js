@@ -24,14 +24,15 @@ const calculateVersionSummary = (version, trip) => {
   const transport = sumItems(version.transports || [], currencies);
   const activities = sumItems(version.activities || [], currencies);
   const meals = sumItems(version.meals || [], currencies);
+  const accommodations = sumItems(version.accommodations || [], currencies);
 
-  const totalMXN = transport + activities + meals;
+  const totalMXN = transport + activities + meals + accommodations;
   const perPersonMXN = trip.peopleCount
     ? totalMXN / trip.peopleCount
     : totalMXN;
 
   return {
-    breakdown: { transport, activities, meals },
+    breakdown: { transport, activities, meals, accommodations },
     totalMXN,
     perPersonMXN
   };

@@ -4,9 +4,9 @@ const router = express.Router();
 const {
   getAllTrips,
   createTrip,
+  updateTrip,
   searchTripsByName,
   deleteTrip,
-  createVersion,
   duplicateVersion,
   activateVersion,
   addItem,
@@ -16,10 +16,10 @@ const {
 
 router.get('/', getAllTrips);
 router.get('/search', searchTripsByName);
+router.put('/', updateTrip);
 router.post('/', createTrip);
 router.delete('/', deleteTrip);
 
-router.post('/version', createVersion);
 router.post('/version/duplicate', duplicateVersion);
 router.put('/version/activate', activateVersion);
 router.post('/item', addItem); 

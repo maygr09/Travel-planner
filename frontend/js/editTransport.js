@@ -1,6 +1,5 @@
 import {
   searchTrips,
-  addItem,
   updateItem
 } from './api.js';
 

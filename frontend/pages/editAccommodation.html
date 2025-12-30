@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit accommodation</title>
+</head>
+<body>
+
+<h1>Edit accommodation</h1>
+
+<form id="accommodationForm">
+
+  <input id="accName" placeholder="Hotel / Airbnb" required />
+  <input id="accCity" placeholder="City" />
+
+  <label>Check-in</label>
+  <input id="accCheckIn" type="date" required />
+
+  <label>Check-out</label>
+  <input id="accCheckOut" type="date" required />
+
+  <input id="accCost" type="number" placeholder="Total cost" required />
+  <input id="accCurrency" placeholder="Currency" required />
+
+  <input id="accBookingCode" placeholder="Booking code (optional)" />
+  <input id="accBookingUrl" placeholder="Booking URL (optional)" />
+
+  <br /><br />
+
+  <button type="submit">Save</button>
+  <button type="button" id="cancel">Cancel</button>
+
+</form>
+
+<script type="module" src="../js/editAccommodation.js"></script>
+</body>
+</html>

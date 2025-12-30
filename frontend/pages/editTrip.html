@@ -11,8 +11,9 @@
 <!-- VERSIONS -->
 <section>
   <h2>Version</h2>
+   <div id="versionList"></div>
   <select id="versionSelect"></select>
-  <button id="duplicateVersion">Duplicate version</button>
+  <button id="duplicateVersion">Duplicate active version</button>
   <button id="activateVersion">Set as active</button>
 </section>
 
@@ -43,9 +44,26 @@
 <!-- TRANSPORTS -->
 <section>
   <h2>Transports</h2>
+
+  <!-- ADD TRANSPORT FORM -->
+  <input id="tType" placeholder="Type (flight, train, bus)" />
+  <input id="tFlightNumber" placeholder="Flight / ref number" />
+  <input id="tFrom" placeholder="From" />
+  <input id="tTo" placeholder="To" />
+  <input id="tDepartureDate" type="date" />
+  <input id="tDepartureTime" type="time" />
+  <input id="tArrivalDate" type="date" />
+  <input id="tArrivalTime" type="time" />
+  <input id="tConfirmationCode" placeholder="Confirmation code" />
+  <input id="tBookingUrl" placeholder="Booking URL" />
+  <input id="tCost" type="number" placeholder="Cost" />
+  <input id="tCurrency" placeholder="Currency" />
+
   <button id="addTransport">Add transport</button>
+
   <div id="transportList"></div>
 </section>
+
 
 <hr />
 
@@ -53,6 +71,7 @@
 <section>
   <h2>Activities</h2>
   <input id="activityName" placeholder="Activity name" />
+  <input id="activityConfirmationCode" placeholder="Confirmation code" />
   <input id="activityCost" type="number" placeholder="Cost" />
   <input id="activityCurrency" placeholder="Currency" />
   <button id="addActivity">Add activity</button>
@@ -65,11 +84,35 @@
 <section>
   <h2>Meals</h2>
   <input id="mealName" placeholder="Meal" />
+  <input id="mealConfirmationCode" placeholder="Confirmation code" />
+  <input id="mealBookingUrl" placeholder="Booking URL" />
   <input id="mealCost" type="number" placeholder="Cost" />
   <input id="mealCurrency" placeholder="Currency" />
   <button id="addMeal">Add meal</button>
   <div id="mealList"></div>
 </section>
+
+<!-- ACCOMMODATION -->
+
+<hr />
+
+<section>
+  <h2>Accommodation</h2>
+
+  <input id="accName" placeholder="Hotel / Airbnb" />
+  <input id="accCity" placeholder="City" />
+  <input id="accCheckIn" type="date" />
+  <input id="accCheckOut" type="date" />
+  <input id="accCost" type="number" placeholder="Total cost" />
+  <input id="accCurrency" placeholder="Currency" />
+  <input id="accBookingCode" placeholder="Booking code (optional)" />
+  <input id="accBookingUrl" placeholder="Booking URL (optional)" />
+
+  <button id="addAccommodation">Add accommodation</button>
+
+  <div id="accommodationList"></div>
+</section>
+
 
 
 <!-- MINI SUMMARY -->
@@ -77,6 +120,14 @@
   <h2>Summary (current version)</h2>
   <pre id="summary"></pre>
 </section>
+
+<hr />
+
+<section>
+  <h2>Compare versions</h2>
+  <div id="versionsCompare"></div>
+</section>
+
 
 <!-- NAVIGATION -->
 <section>
