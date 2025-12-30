@@ -1,7 +1,8 @@
 console.log('EDIT ACTIVITY JS LOADED');
+
 import { searchTrips, updateItem } from './api.js';
 
-/* ===== READ URL PARAMS ===== */
+/* ================= READ URL PARAMS ================= */
 const params = new URLSearchParams(window.location.search);
 const tripName = params.get('trip');
 const versionId = params.get('version');
@@ -9,7 +10,7 @@ const itemId = params.get('item');
 
 let activity = null;
 
-/* ===== LOAD ACTIVITY ===== */
+/* ================= LOAD ACTIVITY ================= */
 const loadActivity = async () => {
   const trips = await searchTrips(tripName);
   const trip = trips[0];
@@ -27,27 +28,39 @@ const loadActivity = async () => {
   document.getElementById('aCurrency').value = activity.currencyCode || '';
 };
 
-/* ===== SAVE ===== */
-document.getElementById('saveActivity')
-  .addEventListener('click', async () => {
+/* ================= INIT ================= */
+document.addEventListener('DOMContentLoaded', () => {
 
-    const updates = {
-      name: document.getElementById('aName').value.trim(),
-      cost: Number(document.getElementById('aCost').value),
-      currencyCode: document.getElementById('aCurrency').value.trim()
-    };
+  // LOAD
+  loadActivity();
 
-    await updateItem({
-      tripName,
-      versionId,
-      itemType: 'activities',
-      itemId,
-      updates
+  // SAVE
+  document.getElementById('saveActivity')
+    .addEventListener('click', async () => {
+
+      const updates = {
+        name: document.getElementById('aName').value.trim(),
+        cost: Number(document.getElementById('aCost').value),
+        currencyCode: document.getElementById('aCurrency').value.trim()
+      };
+
+      await updateItem({
+        tripName,
+        versionId,
+        itemType: 'activities',
+        itemId,
+        updates
+      });
+
+      // volver a editTrip
+      window.location.href =
+        `editTrip.html?trip=${encodeURIComponent(tripName)}`;
     });
 
-    // volver a editTrip
-    window.location.href =
-      `editTrip.html?trip=${encodeURIComponent(tripName)}`;
-  });
-
-loadActivity();
+  // CANCEL
+  document.getElementById('cancelActivity')
+    .addEventListener('click', () => {
+      window.location.href =
+        `editTrip.html?trip=${encodeURIComponent(tripName)}`;
+    });
+});

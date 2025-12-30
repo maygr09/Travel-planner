@@ -76,29 +76,9 @@
             "name": "Disneyland Paris",
             "cost": 225,
             "currencyCode": "EUR"
-          },
-          {
-            "id": "i1766986676126",
-            "name": "Tour 2",
-            "confirmationCode": "123456",
-            "cost": 300,
-            "currencyCode": "MXN"
           }
         ],
-        "meals": [
-          {
-            "id": "i1766986658412",
-            "name": "Comida",
-            "confirmationCode": "",
-            "bookingUrl": "",
-            "cost": 150,
-            "currencyCode": "mxn",
-            "startDate": "",
-            "startTime": "",
-            "endDate": "",
-            "endTime": ""
-          }
-        ],
+        "meals": [],
         "summary": {
           "breakdown": {
             "transport": 4246,

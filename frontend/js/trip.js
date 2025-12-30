@@ -30,6 +30,7 @@ const loadTrip = async () => {
   renderMeals();
   renderAccommodations();
   renderSummary();
+  renderTimeline();
 };
 
 /* ================= HEADER ================= */
@@ -133,7 +134,7 @@ const renderAccommodations = () => {
     return;
   }
 
-  currentVersion.accommodations.forEach(a => {
+  currentVersion.accommodations.forEach(acc => {
     const div = document.createElement('div');
     div.className = 'item';
 
@@ -154,6 +155,110 @@ const renderSummary = () => {
   document.getElementById('summary').textContent =
     JSON.stringify(currentVersion.summary, null, 2);
 };
+
+/* ================= TIMELINE ================= */
+const normalizeDate = (dateStr) => {
+  if (!dateStr) return null;
+  return dateStr.split('T')[0];
+};
+
+const buildTimeline = () => {
+  const timeline = {};
+
+  const pushItem = (date, item) => {
+    if (!date) return;
+    if (!timeline[date]) timeline[date] = [];
+    timeline[date].push(item);
+  };
+
+  //  TRANSPORTS
+  currentVersion.transports.forEach(t => {
+    pushItem(normalizeDate(t.departureDate), {
+      type: 'transport',
+      data: t
+    });
+  });
+
+  //  ACTIVITIES
+  currentVersion.activities.forEach(a => {
+    pushItem(normalizeDate(a.startDate), {
+      type: 'activity',
+      data: a
+    });
+  });
+
+  //  MEALS
+  currentVersion.meals.forEach(m => {
+    pushItem(normalizeDate(m.startDate), {
+      type: 'meal',
+      data: m
+    });
+  });
+
+  //  ACCOMMODATIONS (día por día)
+  currentVersion.accommodations.forEach(acc => {
+    let current = new Date(acc.checkInDate);
+    const end = new Date(acc.checkOutDate);
+
+    while (current <= end) {
+      const dateStr = current.toISOString().split('T')[0];
+      pushItem(dateStr, {
+        type: 'accommodation',
+        data: acc
+      });
+      current.setDate(current.getDate() + 1);
+    }
+  });
+
+  return timeline;
+};
+
+const renderTimeline = () => {
+  const container = document.getElementById('timeline');
+  container.innerHTML = '';
+
+  const timeline = buildTimeline();
+  const days = Object.keys(timeline).sort();
+
+  if (!days.length) {
+    container.innerHTML = '<p>No timeline data yet</p>';
+    return;
+  }
+
+  days.forEach(date => {
+    const dayDiv = document.createElement('div');
+    dayDiv.style.border = '1px solid #ccc';
+    dayDiv.style.padding = '10px';
+    dayDiv.style.marginBottom = '12px';
+
+    dayDiv.innerHTML = `<h3>${date}</h3>`;
+
+    timeline[date].forEach(item => {
+      const p = document.createElement('p');
+
+      switch (item.type) {
+        case 'transport':
+          p.textContent = `✈️ ${item.data.from} → ${item.data.to} (${item.data.departureTime})`;
+          break;
+        case 'activity':
+          p.textContent = `🎟 ${item.data.name}`;
+          break;
+        case 'meal':
+          p.textContent = `🍽 ${item.data.name}`;
+          break;
+        case 'accommodation':
+          p.textContent = `🏨 ${item.data.name}`;
+          break;
+      }
+
+      dayDiv.appendChild(p);
+    });
+
+    container.appendChild(dayDiv);
+  });
+};
+
+
 
 /* ================= INIT ================= */
 loadTrip();
