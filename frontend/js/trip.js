@@ -1,3 +1,9 @@
+const ICONS = {
+  transport: '✈️',
+  activity: '🎟️',
+  meal: '🍽️',
+  accommodation: '🏨'
+};
 import { searchTrips } from './api.js';
 
 /* ================= STATE ================= */
@@ -125,6 +131,7 @@ const renderMeals = () => {
 };
 
 /* ================= ACCOMMODATIONS ================= */
+
 const renderAccommodations = () => {
   const list = document.getElementById('accommodationList');
   list.innerHTML = '';
@@ -152,9 +159,33 @@ const renderAccommodations = () => {
 
 /* ================= SUMMARY ================= */
 const renderSummary = () => {
-  document.getElementById('summary').textContent =
-    JSON.stringify(currentVersion.summary, null, 2);
+  const container = document.getElementById('summaryCards');
+  if (!container) return;
+
+  const s = currentVersion.summary || {};
+  container.innerHTML = '';
+
+  const cards = [
+    { label: 'Total MXN', value: s.totalMXN || 0 },
+    { label: 'Per person', value: s.perPersonMXN || 0 },
+    { label: 'Transports', value: currentVersion.transports.length },
+    { label: 'Activities', value: currentVersion.activities.length },
+    { label: 'Meals', value: currentVersion.meals.length },
+    { label: 'Accommodation', value: currentVersion.accommodations.length }
+  ];
+
+  cards.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'summary-card';
+    div.innerHTML = `
+      <strong>${c.value}</strong>
+      <span>${c.label}</span>
+    `;
+    container.appendChild(div);
+  });
 };
+
+
 
 /* ================= TIMELINE ================= */
 const normalizeDate = (dateStr) => {
@@ -217,44 +248,84 @@ const renderTimeline = () => {
   const container = document.getElementById('timeline');
   container.innerHTML = '';
 
-  const timeline = buildTimeline();
-  const days = Object.keys(timeline).sort();
+  const events = [];
 
-  if (!days.length) {
-    container.innerHTML = '<p>No timeline data yet</p>';
+  currentVersion.transports.forEach(t => {
+    if (t.departureDate && t.departureTime) {
+      events.push({
+        type: 'transport',
+        date: t.departureDate,
+        time: t.departureTime,
+        title: `${t.type}: ${t.from} → ${t.to}`
+      });
+    }
+  });
+
+  currentVersion.activities.forEach(a => {
+    if (a.startDate && a.startTime) {
+      events.push({
+        type: 'activity',
+        date: a.startDate,
+        time: a.startTime,
+        title: a.name
+      });
+    }
+  });
+
+  currentVersion.meals.forEach(m => {
+    if (m.startDate && m.startTime) {
+      events.push({
+        type: 'meal',
+        date: m.startDate,
+        time: m.startTime,
+        title: m.name
+      });
+    }
+  });
+
+  currentVersion.accommodations.forEach(a => {
+    if (a.checkInDate) {
+      events.push({
+        type: 'accommodation',
+        date: a.checkInDate,
+        time: '00:00',
+        title: `Check-in: ${a.name}`
+      });
+    }
+  });
+
+  if (!events.length) {
+    container.textContent = 'No events yet';
     return;
   }
 
-  days.forEach(date => {
-    const dayDiv = document.createElement('div');
-    dayDiv.style.border = '1px solid #ccc';
-    dayDiv.style.padding = '10px';
-    dayDiv.style.marginBottom = '12px';
+  events.sort((a, b) =>
+    `${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`)
+  );
 
-    dayDiv.innerHTML = `<h3>${date}</h3>`;
+  let currentDay = null;
+  let dayDiv = null;
 
-    timeline[date].forEach(item => {
-      const p = document.createElement('p');
+  events.forEach(e => {
+    if (e.date !== currentDay) {
+      currentDay = e.date;
+      dayDiv = document.createElement('div');
+      dayDiv.className = 'day';
+      dayDiv.innerHTML = `<h3>${e.date}</h3>`;
+      container.appendChild(dayDiv);
+    }
 
-      switch (item.type) {
-        case 'transport':
-          p.textContent = `✈️ ${item.data.from} → ${item.data.to} (${item.data.departureTime})`;
-          break;
-        case 'activity':
-          p.textContent = `🎟 ${item.data.name}`;
-          break;
-        case 'meal':
-          p.textContent = `🍽 ${item.data.name}`;
-          break;
-        case 'accommodation':
-          p.textContent = `🏨 ${item.data.name}`;
-          break;
-      }
+    const item = document.createElement('div');
+    item.className = `timeline-item ${e.type}`;
+    item.innerHTML = `
+      <span class="icon">${ICONS[e.type]}</span>
+      <div>
+        <strong>${e.title}</strong><br/>
+        <small>${e.time}</small>
+      </div>
+    `;
 
-      dayDiv.appendChild(p);
-    });
-
-    container.appendChild(dayDiv);
+    dayDiv.appendChild(item);
   });
 };
 

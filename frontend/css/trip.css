@@ -1,0 +1,44 @@
+/* === TIMELINE === */
+
+#timeline {
+  margin-top: 20px;
+}
+
+.day {
+  margin-bottom: 32px;
+}
+
+.day h3 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+/* Item */
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background: #f9f9f9;
+}
+
+/* Icon */
+.timeline-item .icon {
+  font-size: 20px;
+  width: 28px;
+}
+
+/* Content */
+.timeline-item .content {
+  font-size: 14px;
+}
+
+/* Types */
+.timeline-item.transport { background: #eef4ff; }
+.timeline-item.activity { background: #fff7e6; }
+.timeline-item.meal { background: #f3fff3; }
+.timeline-item.accommodation { background: #fdf1f7; }

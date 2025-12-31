@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Trip</title>
+  <link rel="stylesheet" href="../css/trip.css" />
   <style>
     body { font-family: Arial; max-width: 900px; margin: auto; }
     section { margin-bottom: 30px; }
@@ -17,6 +18,39 @@
 <p id="activeVersion"></p>
 
 <hr />
+
+<div class="layout">
+
+  <main class="main">
+    <section>
+      <h2>Timeline</h2>
+    <div id="timeline"></div>
+    </section>
+  </main>
+
+  <aside class="sidebar">
+    <section>
+      <h2><Summary></h2>
+      <div id="summaryCards"></div>
+    </section>
+  </aside>
+
+</div>
+
+<script type="module" src="../js/trip.js"></script>
+</body>
+
+
+<section>
+  <h2>Timeline</h2>
+  <div id="timeline"></div>
+</section>
+
+<section>
+  <h2>Summary</h2>
+
+  <div id="summaryCards" class="summary-grid"></div>
+</section>
 
 <section>
   <h2>Transports</h2>
@@ -39,16 +73,6 @@
 </section>
 
 <hr />
-
-<section>
-  <h2>Summary</h2>
-  <pre id="summary"></pre>
-</section>
-
-<section>
-  <h2>Timeline</h2>
-  <div id="timeline"></div>
-</section>
 
 
 <script type="module" src="../js/trip.js"></script>

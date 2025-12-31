@@ -6,16 +6,16 @@
     "peopleCount": 3,
     "currencies": [
       {
-        "code": "GBM",
-        "exchangeToMXN": 25
-      },
-      {
         "code": "EUR",
         "exchangeToMXN": 22
       },
       {
         "code": "USD",
         "exchangeToMXN": 18.5
+      },
+      {
+        "code": "GBP",
+        "exchangeToMXN": 25
       }
     ],
     "versions": [
@@ -40,34 +40,19 @@
             "bookingUrl": ""
           },
           {
-            "id": "i1766879934365",
-            "type": "Flight",
-            "flightNumber": "AF1687",
-            "from": "CDG",
-            "to": "EDI",
-            "departureDate": "2026-02-20",
-            "departureTime": "11:40",
-            "arrivalDate": "2026-02-20",
-            "arrivalTime": "14:35",
-            "cost": 169,
-            "currencyCode": "EUR",
-            "confirmationCode": "",
-            "bookingUrl": ""
-          },
-          {
-            "id": "i1766892791315",
-            "type": "Bus",
-            "flightNumber": "Flixbus",
-            "from": "Edinburgh",
+            "id": "i1767154781981",
+            "type": "Car rental",
+            "flightNumber": "",
+            "from": "Inverness",
             "to": "Inverness",
-            "departureDate": "2026-02-20",
-            "departureTime": "13:15",
-            "arrivalDate": "2026-02-20",
+            "departureDate": "2026-02-22",
+            "departureTime": "09:00",
+            "arrivalDate": "2026-02-23",
             "arrivalTime": "17:00",
             "confirmationCode": "",
             "bookingUrl": "",
-            "cost": 24,
-            "currencyCode": "EUR"
+            "cost": 98,
+            "currencyCode": "GBP"
           }
         ],
         "activities": [
@@ -76,18 +61,25 @@
             "name": "Disneyland Paris",
             "cost": 225,
             "currencyCode": "EUR"
+          },
+          {
+            "id": "i1767192955997",
+            "name": "Free walking tour Paris",
+            "confirmationCode": "A3619388",
+            "cost": 40,
+            "currencyCode": "EUR"
           }
         ],
         "meals": [],
         "summary": {
           "breakdown": {
-            "transport": 4246,
-            "activities": 4950,
+            "transport": 2450,
+            "activities": 5830,
             "meals": 0,
-            "accommodations": 7992
+            "accommodations": 14983.5
           },
-          "totalMXN": 17188,
-          "perPersonMXN": 5729.333333333333
+          "totalMXN": 23263.5,
+          "perPersonMXN": 7754.5
         },
         "accommodations": [
           {
@@ -95,11 +87,44 @@
             "name": "Ibis budget Hotel Edinburgh Park",
             "city": "Edinburgh",
             "checkInDate": "2026-02-19",
-            "checkOutDate": "2026-02-22",
-            "cost": 432,
-            "currencyCode": "USD",
-            "bookingCode": "",
-            "bookingUrl": ""
+            "checkOutDate": "2026-02-21",
+            "cost": 193,
+            "currencyCode": "GBP",
+            "bookingCode": "5467023006",
+            "bookingUrl": "booking.com"
+          },
+          {
+            "id": "i1767153851700",
+            "name": "Ibis budget Paris Porte de Montmartre",
+            "city": "Paris",
+            "checkInDate": "2026-02-17",
+            "checkOutDate": "2026-02-19",
+            "cost": 203,
+            "currencyCode": "EUR",
+            "bookingCode": "6761586891",
+            "bookingUrl": "booking.com"
+          },
+          {
+            "id": "i1767154054807",
+            "name": "The Waverley West House",
+            "city": "Inverness",
+            "checkInDate": "2026-02-21",
+            "checkOutDate": "2026-02-23",
+            "cost": 133.2,
+            "currencyCode": "GBP",
+            "bookingCode": "6761599247",
+            "bookingUrl": "booking.com"
+          },
+          {
+            "id": "i1767154115566",
+            "name": "Ibis budget Hotel Edinburgh Park",
+            "city": "Edinburgh",
+            "checkInDate": "2026-02-23",
+            "checkOutDate": "2026-02-24",
+            "cost": 94.5,
+            "currencyCode": "GBP",
+            "bookingCode": "6862061762",
+            "bookingUrl": "booking.com"
           }
         ]
       },
@@ -148,7 +173,7 @@
         }
       }
     ],
-    "updatedAt": "2025-12-29T04:55:50.704Z"
+    "updatedAt": "2025-12-31T04:10:31.906Z"
   },
   {
     "id": "1766889273997",
