@@ -313,7 +313,7 @@ document.getElementById('addActivity')
     const cost = Number(document.getElementById('activityCost').value);
     const currencyCode = document.getElementById('activityCurrency').value.trim();
 
-    if (!name || !startDate || !startTime || !endDate || !endTime || !cost || !currencyCode) {
+    if (!name || !startDate || !startTime || !endDate || !endTime) {
       alert('Missing required fields');
       return;
     }

@@ -42,3 +42,15 @@
 .timeline-item.activity { background: #fff7e6; }
 .timeline-item.meal { background: #f3fff3; }
 .timeline-item.accommodation { background: #fdf1f7; }
+
+
+.day-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.day-card h3 {
+  margin-top: 0;
+}

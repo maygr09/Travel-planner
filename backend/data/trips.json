@@ -40,21 +40,6 @@
             "bookingUrl": ""
           },
           {
-            "id": "i1767154781981",
-            "type": "Car rental",
-            "flightNumber": "",
-            "from": "Inverness",
-            "to": "Inverness",
-            "departureDate": "2026-02-22",
-            "departureTime": "09:00",
-            "arrivalDate": "2026-02-23",
-            "arrivalTime": "17:00",
-            "confirmationCode": "",
-            "bookingUrl": "",
-            "cost": 98,
-            "currencyCode": "GBP"
-          },
-          {
             "id": "i1767196297893",
             "type": "Flight",
             "flightNumber": "AF16",
@@ -70,19 +55,64 @@
             "currencyCode": "EUR"
           },
           {
-            "id": "i1767196338829",
+            "id": "i1767199675094",
+            "type": "Flight",
+            "flightNumber": "AM4",
+            "from": "CDG",
+            "to": "MEX",
+            "departureDate": "2026-02-24",
+            "departureTime": "23:00",
+            "arrivalDate": "2026-02-25",
+            "arrivalTime": "04:20",
+            "confirmationCode": "MJUCHQ",
+            "bookingUrl": "aeromexico.com",
+            "cost": 0,
+            "currencyCode": "MXN"
+          },
+          {
+            "id": "i1767208639867",
+            "type": "Train",
+            "flightNumber": "Y11944",
+            "from": "EDI",
+            "to": "INV",
+            "departureDate": "2026-02-21",
+            "departureTime": "16:33",
+            "arrivalDate": "2026-02-21",
+            "arrivalTime": "20:06",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 298,
+            "currencyCode": "USD"
+          },
+          {
+            "id": "i1767208707187",
+            "type": "Train",
+            "flightNumber": "Y39581",
+            "from": "INV",
+            "to": "EDI",
+            "departureDate": "2026-02-23",
+            "departureTime": "20:22",
+            "arrivalDate": "2026-02-24",
+            "arrivalTime": "00:38",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767209847637",
             "type": "Flight",
             "flightNumber": "AF16",
-            "from": "CDG",
-            "to": "EDI",
-            "departureDate": "2026-02-19",
-            "departureTime": "20:45",
-            "arrivalDate": "2026-02-19",
-            "arrivalTime": "21:35",
+            "from": "EDI",
+            "to": "CDG",
+            "departureDate": "2026-02-24",
+            "departureTime": "11:40",
+            "arrivalDate": "2026-02-24",
+            "arrivalTime": "14:35",
             "confirmationCode": "",
-            "bookingUrl": "airfrance.com",
-            "cost": 100,
-            "currencyCode": "USD"
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
           }
         ],
         "activities": [
@@ -115,20 +145,473 @@
             "endDate": "2026-02-17",
             "endTime": "20:00",
             "confirmationCode": "NA",
-            "cost": 1,
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767199526456",
+            "name": "Car rental",
+            "startDate": "2026-02-22",
+            "startTime": "09:00",
+            "endDate": "2026-02-22",
+            "endTime": "09:30",
+            "confirmationCode": "",
+            "cost": 98,
+            "currencyCode": "GBP"
+          },
+          {
+            "id": "i1767200013180",
+            "name": "Car delivery",
+            "startDate": "2026-02-23",
+            "startTime": "17:00",
+            "endDate": "2026-02-23",
+            "endTime": "18:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767202270024",
+            "name": "Castillo Eilean Donan",
+            "startDate": "2026-02-22",
+            "startTime": "11:00",
+            "endDate": "2026-02-22",
+            "endTime": "12:00",
+            "confirmationCode": "",
+            "cost": 900,
             "currencyCode": "MXN"
+          },
+          {
+            "id": "i1767202371363",
+            "name": "Castillo Uquart",
+            "startDate": "2026-02-22",
+            "startTime": "13:30",
+            "endDate": "2026-02-22",
+            "endTime": "14:30",
+            "confirmationCode": "",
+            "cost": 1050,
+            "currencyCode": "MXN"
+          },
+          {
+            "id": "i1767206367988",
+            "name": "Clava Cairns",
+            "startDate": "2026-02-22",
+            "startTime": "15:15",
+            "endDate": "2026-02-22",
+            "endTime": "16:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767206428317",
+            "name": "Lago Ness (sunset)",
+            "startDate": "2026-02-22",
+            "startTime": "17:30",
+            "endDate": "2026-02-22",
+            "endTime": "19:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767206816308",
+            "name": "Castillo de Inverness (por fuera)",
+            "startDate": "2026-02-22",
+            "startTime": "08:00",
+            "endDate": "2026-02-22",
+            "endTime": "08:20",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767206924849",
+            "name": "Greig St. Bridge",
+            "startDate": "2026-02-22",
+            "startTime": "08:30",
+            "endDate": "2026-02-22",
+            "endTime": "08:40",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767207517757",
+            "name": "Glecoe",
+            "startDate": "2026-02-23",
+            "startTime": "10:00",
+            "endDate": "2026-02-23",
+            "endTime": "11:15",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767207814495",
+            "name": "Viaducto de Glenfinnan",
+            "startDate": "2026-02-23",
+            "startTime": "12:20",
+            "endDate": "2026-02-23",
+            "endTime": "13:15",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767208098060",
+            "name": "Inverness Botanic Garden",
+            "startDate": "2026-02-23",
+            "startTime": "15:15",
+            "endDate": "2026-02-23",
+            "endTime": "16:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767210398666",
+            "name": "Princess Street",
+            "startDate": "2026-02-20",
+            "startTime": "09:00",
+            "endDate": "2026-02-20",
+            "endTime": "09:30",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211226928",
+            "name": "Greyfriars Statue",
+            "startDate": "2026-02-20",
+            "startTime": "11:00",
+            "endDate": "2026-02-20",
+            "endTime": "11:20",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211295498",
+            "name": "National Scottish Museum",
+            "startDate": "2026-02-20",
+            "startTime": "11:00",
+            "endDate": "2026-02-20",
+            "endTime": "12:30",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211368232",
+            "name": "National Gallery",
+            "startDate": "2026-02-20",
+            "startTime": "10:00",
+            "endDate": "2026-02-20",
+            "endTime": "10:40",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211585591",
+            "name": "Scott Monument",
+            "startDate": "2026-02-20",
+            "startTime": "09:30",
+            "endDate": "2026-02-20",
+            "endTime": "09:40",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211624111",
+            "name": "Ross Fountain",
+            "startDate": "2026-02-20",
+            "startTime": "09:40",
+            "endDate": "2026-02-20",
+            "endTime": "10:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211722547",
+            "name": "Victoria Street",
+            "startDate": "2026-02-20",
+            "startTime": "12:40",
+            "endDate": "2026-02-20",
+            "endTime": "13:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211774320",
+            "name": "Royal Mile",
+            "startDate": "2026-02-20",
+            "startTime": "13:10",
+            "endDate": "2026-02-20",
+            "endTime": "14:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767211851448",
+            "name": "Edinburgh Castle",
+            "startDate": "2026-02-20",
+            "startTime": "14:00",
+            "endDate": "2026-02-20",
+            "endTime": "15:30",
+            "confirmationCode": "",
+            "cost": 1565,
+            "currencyCode": "MXN"
+          },
+          {
+            "id": "i1767211907146",
+            "name": "The Vennel",
+            "startDate": "2026-02-20",
+            "startTime": "15:45",
+            "endDate": "2026-02-20",
+            "endTime": "16:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767212146298",
+            "name": "The meadows",
+            "startDate": "2026-02-20",
+            "startTime": "16:30",
+            "endDate": "2026-02-20",
+            "endTime": "17:30",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767212323714",
+            "name": "Circle Lane",
+            "startDate": "2026-02-21",
+            "startTime": "08:15",
+            "endDate": "2026-02-20",
+            "endTime": "08:30",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767212455263",
+            "name": "Dean Village",
+            "startDate": "2026-02-21",
+            "startTime": "08:40",
+            "endDate": "2026-02-21",
+            "endTime": "09:20",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767212644827",
+            "name": "Edinburgh Botanic Garden",
+            "startDate": "2026-02-21",
+            "startTime": "09:50",
+            "endDate": "2026-02-21",
+            "endTime": "10:30",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767212868633",
+            "name": "Grassmarket",
+            "startDate": "2026-02-21",
+            "startTime": "11:00",
+            "endDate": "2026-02-21",
+            "endTime": "11:40",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767213016367",
+            "name": "Granton View",
+            "startDate": "2026-02-21",
+            "startTime": "12:40",
+            "endDate": "2026-02-21",
+            "endTime": "13:00",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767213125425",
+            "name": "Waterstones",
+            "startDate": "2026-02-21",
+            "startTime": "14:00",
+            "endDate": "2026-02-21",
+            "endTime": "14:40",
+            "confirmationCode": "",
+            "cost": 0,
+            "currencyCode": ""
           }
         ],
-        "meals": [],
+        "meals": [
+          {
+            "id": "i1767200265646",
+            "name": "Cena",
+            "startDate": "2026-02-17",
+            "startTime": "20:00",
+            "endDate": "2026-02-17",
+            "endTime": "21:30",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767200354745",
+            "name": "Desayuno",
+            "startDate": "2026-02-18",
+            "startTime": "06:00",
+            "endDate": "2026-02-18",
+            "endTime": "07:00",
+            "confirmationCode": "Hotel",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767200413038",
+            "name": "Desayuno",
+            "startDate": "2026-02-19",
+            "startTime": "09:00",
+            "endDate": "2026-02-19",
+            "endTime": "10:15",
+            "confirmationCode": "Hotel",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767206647556",
+            "name": "Cena (The Phoenix Ale House)",
+            "startDate": "2026-02-22",
+            "startTime": "20:00",
+            "endDate": "2026-02-22",
+            "endTime": "22:00",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767207016754",
+            "name": "Desayuno",
+            "startDate": "2026-02-22",
+            "startTime": "07:30",
+            "endDate": "2026-02-22",
+            "endTime": "08:00",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767207478353",
+            "name": "Desayuno",
+            "startDate": "2026-02-23",
+            "startTime": "07:30",
+            "endDate": "2026-02-23",
+            "endTime": "08:00",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767209712440",
+            "name": "Desayuno",
+            "startDate": "2026-02-24",
+            "startTime": "08:00",
+            "endDate": "2026-02-24",
+            "endTime": "09:00",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767210022871",
+            "name": "Comida-Cena",
+            "startDate": "2026-02-24",
+            "startTime": "16:30",
+            "endDate": "2026-02-24",
+            "endTime": "19:30",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767210098413",
+            "name": "Desayuno",
+            "startDate": "2026-02-20",
+            "startTime": "08:00",
+            "endDate": "2026-02-20",
+            "endTime": "08:30",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767212064665",
+            "name": "Comida (Ikigai Ramen)",
+            "startDate": "2026-02-20",
+            "startTime": "18:00",
+            "endDate": "2026-02-20",
+            "endTime": "19:00",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767212223475",
+            "name": "Desayuno",
+            "startDate": "2026-02-21",
+            "startTime": "07:00",
+            "endDate": "2026-02-21",
+            "endTime": "07:45",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          },
+          {
+            "id": "i1767213231860",
+            "name": "Comida",
+            "startDate": "2026-02-21",
+            "startTime": "14:10",
+            "endDate": "2026-02-21",
+            "endTime": "14:40",
+            "confirmationCode": "",
+            "bookingUrl": "",
+            "cost": 0,
+            "currencyCode": ""
+          }
+        ],
         "summary": {
           "breakdown": {
-            "transport": 7490,
-            "activities": 5830,
+            "transport": 8703,
+            "activities": 8280,
             "meals": 0,
-            "accommodations": 14983.5
+            "accommodations": 14991
           },
-          "totalMXN": 28303.5,
-          "perPersonMXN": 9434.5
+          "totalMXN": 31974,
+          "perPersonMXN": 10658
         },
         "accommodations": [
           {
@@ -140,7 +623,9 @@
             "cost": 193,
             "currencyCode": "GBP",
             "bookingCode": "5467023006",
-            "bookingUrl": "booking.com"
+            "bookingUrl": "booking.com",
+            "checkInTime": "23:00",
+            "checkOutTime": "12:00"
           },
           {
             "id": "i1767153851700",
@@ -151,7 +636,9 @@
             "cost": 203,
             "currencyCode": "EUR",
             "bookingCode": "6761586891",
-            "bookingUrl": "booking.com"
+            "bookingUrl": "booking.com",
+            "checkInTime": "17:30",
+            "checkOutTime": "10:30"
           },
           {
             "id": "i1767154054807",
@@ -159,67 +646,27 @@
             "city": "Inverness",
             "checkInDate": "2026-02-21",
             "checkOutDate": "2026-02-23",
-            "cost": 133.2,
+            "cost": 133,
             "currencyCode": "GBP",
             "bookingCode": "6761599247",
-            "bookingUrl": "booking.com"
+            "bookingUrl": "booking.com",
+            "checkInTime": "20:30",
+            "checkOutTime": "08:00"
           },
           {
             "id": "i1767154115566",
             "name": "Ibis budget Hotel Edinburgh Park",
             "city": "Edinburgh",
-            "checkInDate": "2026-02-23",
+            "checkInDate": "2026-02-24",
             "checkOutDate": "2026-02-24",
-            "cost": 94.5,
+            "cost": 95,
             "currencyCode": "GBP",
             "bookingCode": "6862061762",
-            "bookingUrl": "booking.com"
+            "bookingUrl": "booking.com",
+            "checkInTime": "01:00",
+            "checkOutTime": "09:15"
           }
         ]
-      },
-      {
-        "id": "v2",
-        "name": "Opcion B",
-        "isActive": false,
-        "transports": [
-          {
-            "id": "i1766879643240",
-            "type": "flight",
-            "flightNumber": "AM3",
-            "from": "MEX",
-            "to": "CDG",
-            "departureDate": "2026-02-16",
-            "departureTime": "22:25",
-            "arrivalDate": "2026-02-17",
-            "arrivalTime": "16:00",
-            "cost": 0,
-            "currencyCode": "MXN"
-          },
-          {
-            "id": "i1766879934365",
-            "type": "flight",
-            "flightNumber": "AF1687",
-            "from": "CDG",
-            "to": "EDI",
-            "departureDate": "2026-02-20",
-            "departureTime": "11:40",
-            "arrivalDate": "2026-02-20",
-            "arrivalTime": "14:35",
-            "cost": 169,
-            "currencyCode": "EUR"
-          }
-        ],
-        "activities": [],
-        "meals": [],
-        "summary": {
-          "breakdown": {
-            "transport": 0,
-            "activities": 0,
-            "meals": 0
-          },
-          "totalMXN": 0,
-          "perPersonMXN": 0
-        }
       }
     ],
     "updatedAt": "2025-12-31T04:10:31.906Z"

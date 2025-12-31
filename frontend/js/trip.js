@@ -37,6 +37,7 @@ const loadTrip = async () => {
   renderAccommodations();
   renderSummary();
   renderTimeline();
+  renderDayCards();
 };
 
 /* ================= HEADER ================= */
@@ -259,6 +260,14 @@ const renderTimeline = () => {
         title: `${t.type}: ${t.from} → ${t.to}`
       });
     }
+    if (t.arrivalDate && t.arrivalTime) {
+      events.push({
+        type: 'transport',
+        date: t.arrivalDate,
+        time: t.arrivalTime,
+        title: `${t.type} Arrival: ${t.to}`
+      });
+    }
   });
 
   currentVersion.activities.forEach(a => {
@@ -284,12 +293,20 @@ const renderTimeline = () => {
   });
 
   currentVersion.accommodations.forEach(a => {
-    if (a.checkInDate) {
+    if (a.checkInDate && a.checkInTime) {
       events.push({
         type: 'accommodation',
         date: a.checkInDate,
-        time: '00:00',
+        time: a.checkInTime,
         title: `Check-in: ${a.name}`
+      });
+    }
+    if (a.checkOutDate && a.checkOutTime) {
+      events.push({
+        type: 'accommodation',
+        date: a.checkOutDate,
+        time: a.checkOutTime,
+        title: `Check-out: ${a.name}`
       });
     }
   });
@@ -328,6 +345,61 @@ const renderTimeline = () => {
     dayDiv.appendChild(item);
   });
 };
+
+const renderDayCards = () => {
+  const container = document.getElementById('dayCards');
+  container.innerHTML = '';
+
+  const events = [];
+
+  currentVersion.transports.forEach(t => {
+    if (t.departureDate && t.departureTime) {
+      events.push({ date: t.departureDate, time: t.departureTime, title: `${t.type}: ${t.from} → ${t.to}` });
+    }
+  });
+
+  currentVersion.activities.forEach(a => {
+    if (a.startDate && a.startTime) {
+      events.push({ date: a.startDate, time: a.startTime, title: a.name });
+    }
+  });
+
+  currentVersion.meals.forEach(m => {
+    if (m.startDate && m.startTime) {
+      events.push({ date: m.startDate, time: m.startTime, title: m.name });
+    }
+  });
+
+  currentVersion.accommodations.forEach(a => {
+    if (a.checkInDate) {
+      events.push({ date: a.checkInDate, time: '00:00', title: `Check-in: ${a.name}` });
+    }
+  });
+
+  const byDay = {};
+  events.forEach(e => {
+    if (!byDay[e.date]) byDay[e.date] = [];
+    byDay[e.date].push(e);
+  });
+
+  Object.keys(byDay).forEach(date => {
+    const card = document.createElement('div');
+    card.className = 'day-card';
+
+    card.innerHTML = `<h3>${date}</h3>`;
+
+    byDay[date]
+      .sort((a, b) => a.time.localeCompare(b.time))
+      .forEach(e => {
+        const p = document.createElement('p');
+        p.textContent = `${e.time} — ${e.title}`;
+        card.appendChild(p);
+      });
+
+    container.appendChild(card);
+  });
+};
+
 
 
 
