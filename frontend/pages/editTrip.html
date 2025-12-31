@@ -6,30 +6,40 @@
 </head>
 <body>
 
+  <link rel="stylesheet" href="../css/app.css" />
+
+<div class="page">
+  <div class="card wide">
+
 <h1 id="tripTitle">Edit trip</h1>
 
 <!-- VERSIONS -->
 <section>
+  <div class="section-card">
   <h2>Version</h2>
    <div id="versionList"></div>
   <select id="versionSelect"></select>
   <button id="duplicateVersion">Duplicate active version</button>
   <button id="activateVersion">Set as active</button>
+  </div>
 </section>
 
 <hr />
 
 <!-- BASIC INFO -->
 <section>
+  <div class="section-card">
   <h2>Basic info</h2>
   <input id="peopleCount" type="number" placeholder="People count" />
   <button id="saveBasic">Save</button>
+</div>
 </section>
 
 <hr />
 
 <!-- CURRENCIES -->
 <section>
+  <div class="section-card">
   <h2>Currencies</h2>
 
   <input id="currencyCode" placeholder="EUR" />
@@ -37,12 +47,14 @@
   <button id="addCurrency">Add currency</button>
 
   <ul id="currencyList"></ul>
+  </div>
 </section>
 
 <hr />
 
 <!-- TRANSPORTS -->
 <section>
+  <div class="section-card">
   <h2>Transports</h2>
 
   <!-- ADD TRANSPORT FORM -->
@@ -62,6 +74,7 @@
   <button id="addTransport">Add transport</button>
 
   <div id="transportList"></div>
+  </div>
 </section>
 
 
@@ -69,6 +82,7 @@
 
 <!-- ACTIVITIES -->
 <section>
+  <div class="section-card">
   <h2>Activities</h2>
   <input id="activityName" placeholder="Activity name" />
   <input id="activityStartDate" type="date" />
@@ -80,31 +94,17 @@
   <input id="activityCurrency" placeholder="Currency" />
   <button id="addActivity">Add activity</button>
   <div id="activityList"></div>
+  </div>
 </section>
 
 <hr />
-
-<!-- MEALS -->
-<section>
-  <h2>Meals</h2>
-  <input id="mealName" placeholder="Meal" />
-  <input id="mealStartDate" type="date" />
-  <input id="mealStartTime" type="time" />
-  <input id="mealEndDate" type="date" />
-  <input id="mealEndTime" type="time" />
-  <input id="mealConfirmationCode" placeholder="Confirmation code" />
-  <input id="mealBookingUrl" placeholder="Booking URL" />
-  <input id="mealCost" type="number" placeholder="Cost" />
-  <input id="mealCurrency" placeholder="Currency" />
-  <button id="addMeal">Add meal</button>
-  <div id="mealList"></div>
-</section>
 
 <!-- ACCOMMODATION -->
 
 <hr />
 
 <section>
+  <div class="section-card">
   <h2>Accommodation</h2>
 
   <input id="accName" placeholder="Hotel / Airbnb" />
@@ -121,28 +121,56 @@
   <button id="addAccommodation">Add accommodation</button>
 
   <div id="accommodationList"></div>
+  </div>
+</section>
+
+<!-- MEALS -->
+<section>
+  <div class="section-card">
+  <h2>Meals</h2>
+  <input id="mealName" placeholder="Meal" />
+  <input id="mealStartDate" type="date" />
+  <input id="mealStartTime" type="time" />
+  <input id="mealEndDate" type="date" />
+  <input id="mealEndTime" type="time" />
+  <input id="mealConfirmationCode" placeholder="Confirmation code" />
+  <input id="mealBookingUrl" placeholder="Booking URL" />
+  <input id="mealCost" type="number" placeholder="Cost" />
+  <input id="mealCurrency" placeholder="Currency" />
+  <button id="addMeal">Add meal</button>
+  <div id="mealList"></div>
+  </div>
 </section>
 
 
 
 <!-- MINI SUMMARY -->
 <section>
+  <div class="section-card">
   <h2>Summary (current version)</h2>
   <pre id="summary"></pre>
+  </div>
 </section>
 
 <hr />
 
 <section>
+  <div class="section-card">
   <h2>Compare versions</h2>
   <div id="versionsCompare"></div>
+  </div>
 </section>
 
 
 <!-- NAVIGATION -->
 <section>
+  <div class="section-card">
   <button id="goToTrip">View final trip</button>
+  </div>
 </section>
+
+  </div>
+</div>
 
 <script type="module" src="../js/editTrip.js"></script>
 </body>
