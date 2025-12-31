@@ -61,7 +61,11 @@ const fillForm = (t) => {
 };
 
 /* ================= SAVE ================= */
-document.getElementById('save').addEventListener('click', async () => {
+const form = document.getElementById('editForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
   const item = {
     type: document.getElementById('type').value,
     flightNumber: document.getElementById('flightNumber').value,
@@ -81,8 +85,7 @@ document.getElementById('save').addEventListener('click', async () => {
     await updateItem({
       tripName,
       versionId,
-      itemType: 'transports',
-      itemId,
+      itemType: 'transports', 
       updates: item
     });
   } else {
@@ -98,11 +101,13 @@ document.getElementById('save').addEventListener('click', async () => {
     `editTrip.html?trip=${encodeURIComponent(tripName)}`;
 });
 
+
 /* ================= CANCEL ================= */
-document.getElementById('cancel').addEventListener('click', () => {
+document.getElementById('cancelTransport').addEventListener('click', () => {
   window.location.href =
     `editTrip.html?trip=${encodeURIComponent(tripName)}`;
 });
+
 
 /* ================= INIT ================= */
 load();

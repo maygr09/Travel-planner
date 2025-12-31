@@ -6,33 +6,62 @@
 </head>
 <body>
 
-<h1 id="title">Meal</h1>
+  <link rel="stylesheet" href="../css/forms.css" />
+<form id="editForm">
+<div class="page">
+  <div class="card">
+    <h1>Edit Meal</h1>
 
-<section>
-  <input id="name" placeholder="Meal / Restaurant" />
+    <div class="form-group">
+      <label>Name</label>
+      <input id="name" placeholder="Meal/Restaurant"/>
+    </div>
 
-  <br /><br />
+    <div class="form-group">
+      <label>Start date</label>
+      <input id="startDate" type="date" />
+    </div>
 
-  <input id="startDate" type="date" placeholder="Start date" />
-  <input id="startTime" type="time" placeholder="Start time" />
-  <input id="endDate" type="date" placeholder="End date" />
-  <input id="endTime" type="time" placeholder="End time" />
+    <div class="form-group">
+      <label>Start time</label>
+      <input id="startTime" type="time" />
+    </div>
 
-    <br /><br />
-    
-  <input id="confirmationCode" placeholder="Confirmation code" />
-  <input id="bookingUrl" placeholder="Booking URL" />
+    <div class="form-group">
+      <label>End date</label>
+      <input id="endDate" type="date" />
+    </div>
 
-  <br /><br />
+    <div class="form-group">
+      <label>End time</label>
+      <input id="endTime" type="time" />
+    </div>
 
-  <input type="number" id="cost" placeholder="Cost" />
-  <input id="currencyCode" placeholder="Currency" />
-</section>
+    <div class="form-group">
+      <label>Confirmation Code</label>
+      <input id="confirmationCode" />
+      <input id="bookingUrl" placeholder="link" />
+    </div>
 
-<hr />
+    <div class="form-group">
+      <label>Cost</label>
+      <input id="cost" type="number" />
+    </div>
 
-<button id="save" type="button">Save</button>
-<button id="cancel" type="button">Cancel</button>
+    <div class="form-group">
+      <label>Currency</label>
+      <input id="currencyCode" />
+    </div>
+
+    <div class="actions">
+      <button type="button" class="secondary" id="cancelMeal">Cancel</button>
+      <button type="submit" class="primary" id="saveMeal">Save</button>
+    </div>
+  </div>
+</div>
+</form>
+
+
 
 <script type="module" src="../js/editMeal.js"></script>
 </body>

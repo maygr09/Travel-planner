@@ -59,7 +59,11 @@ const fillForm = (m) => {
 };
 
 /* ================= SAVE ================= */
-document.getElementById('save').addEventListener('click', async () => {
+const form = document.getElementById('editForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
   const item = {
     name: document.getElementById('name').value,
     startDate: document.getElementById('startDate').value,
@@ -77,7 +81,6 @@ document.getElementById('save').addEventListener('click', async () => {
       tripName,
       versionId,
       itemType: 'meals',
-      itemId,
       updates: item
     });
   } else {
@@ -93,8 +96,9 @@ document.getElementById('save').addEventListener('click', async () => {
     `editTrip.html?trip=${encodeURIComponent(tripName)}`;
 });
 
+
 /* ================= CANCEL ================= */
-document.getElementById('cancel').addEventListener('click', () => {
+document.getElementById('cancelMeal').addEventListener('click', () => {
   window.location.href =
     `editTrip.html?trip=${encodeURIComponent(tripName)}`;
 });

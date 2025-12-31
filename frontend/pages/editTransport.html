@@ -6,40 +6,69 @@
 </head>
 <body>
 
-<h1 id="title">Transport</h1>
+<link rel="stylesheet" href="../css/forms.css" />
 
-<section>
-  <input id="type" placeholder="Type (flight, train, bus, ferry)" />
-  <input id="flightNumber" placeholder="Flight / service number" />
+<form id="editForm">
+<div class="page">
+  <div class="card">
+    <h1>Edit Transport</h1>
 
-  <input id="from" placeholder="From" />
-  <input id="to" placeholder="To" />
+    <div class="form-group">
+      <label>Type</label>
+      <input id="type" placeholder="Type (flight, train, bus, ferry)"/>
+    </div>
 
-  <label>Departure</label><br />
-  <input type="date" id="departureDate" />
-  <input type="time" id="departureTime" />
+    <div class="form-group">
+      <label>Service Number</label>
+      <input id="flightNumber" placeholder="Flight / service number" />
+    </div>
 
-  <br /><br />
+    <div class="form-group">
+      <label>From</label>
+      <input id="from" placeholder="From" required />
+    </div>
 
-  <label>Arrival</label><br />
-  <input type="date" id="arrivalDate" />
-  <input type="time" id="arrivalTime" />
+    <div class="form-group">
+      <label>To</label>
+      <input id="to" placeholder="To" required />
+    </div>
 
-  <br /><br />
+    <div class="form-group">
+      <label>Departure</label>
+      <input id="departureDate" type="date" required />
+      <input id="departureTime" type="time" required />
+    </div>
 
-  <input id="confirmationCode" placeholder="Confirmation code" />
-  <input id="bookingUrl" placeholder="Booking URL" />
+     <div class="form-group">
+      <label>Arrival</label>
+      <input id="arrivalDate" type="date" required />
+      <input id="arrivalTime" type="time" required />
+    </div>
 
-  <br /><br />
+    <div class="form-group">
+      <label>Booking Code</label>
+      <input id="confirmationCode" placeholder="Confirmation Code" />
+      <input id="bookingUrl" placeholder="Link" />
+    </div>
 
-  <input type="number" id="cost" placeholder="Cost" />
-  <input id="currencyCode" placeholder="Currency" />
-</section>
+    <div class="form-group">
+      <label>Cost</label>
+      <input id="cost" type="number" />
+    </div>
 
-<hr />
+    <div class="form-group">
+      <label>Currency</label>
+      <input id="currencyCode" />
+    </div>
 
-<button id="save" type="button">Save</button>
-<button id="cancel" type="button">Cancel</button>
+
+    <div class="actions">
+      <button type="button" class="secondary" id="cancelTransport">Cancel</button>
+      <button type="submit" class="primary" id="saveTransport">Save</button>
+    </div>
+  </div>
+</div>
+</form>
 
 <script type="module" src="../js/editTransport.js"></script>
 </body>

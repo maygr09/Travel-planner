@@ -5,18 +5,61 @@
 </head>
 <body>
 
-<h1>Edit Activity</h1>
+  <link rel="stylesheet" href="../css/forms.css" />
 
-<input id="aName" />
-<input id="aConfirmationCode" />
-<input id="aStartDate" type="date" />
-<input id="aStartTime" type="time" />
-<input id="aEndDate" type="date" />
-<input id="aEndTime" type="time" />
-<input id="aCost" type="number" />
-<input id="aCurrency" />
-<button id="saveActivity" type="button">Save</button>
-<button id="cancelActivity" type="button">Cancel</button>
+<form id="editForm">
+<div class="page">
+  <div class="card">
+    <h1>Edit Activity</h1>
+
+    <div class="form-group">
+      <label>Name</label>
+      <input id="aName" />
+    </div>
+
+    <div class="form-group">
+      <label>Start date</label>
+      <input id="aStartDate" type="date" />
+    </div>
+
+    <div class="form-group">
+      <label>Start time</label>
+      <input id="aStartTime" type="time" />
+    </div>
+
+    <div class="form-group">
+      <label>End date</label>
+      <input id="aEndDate" type="date" />
+    </div>
+
+    <div class="form-group">
+      <label>End time</label>
+      <input id="aEndTime" type="time" />
+    </div>
+
+    <div class="form-group">
+      <label>Confirmation Code</label>
+      <input id="aConfirmationCode" />
+    </div>
+
+    <div class="form-group">
+      <label>Cost</label>
+      <input id="aCost" type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>Currency</label>
+      <input id="aCurrency" />
+    </div>
+
+    <div class="actions">
+      <button type="button" class="secondary" id="cancelActivity">Cancel</button>
+      <button type="submit" class="primary" id="saveActivity">Save</button>
+    </div>
+  </div>
+</div>
+</form>
+
 
 
 <script type="module" src="../js/editActivity.js"></script>

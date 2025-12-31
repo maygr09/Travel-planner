@@ -2,36 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Edit accommodation</title>
+  <title>Edit Accommodation</title>
+  <link rel="stylesheet" href="../css/forms.css" />
 </head>
 <body>
 
-<h1>Edit accommodation</h1>
+<form id="editForm">
+  <div class="page">
+    <div class="card">
+      <h1>Edit Accommodation</h1>
 
-<form id="accommodationForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input id="accName" placeholder="Hotel/Airbnb" />
+      </div>
 
-  <input id="accName" placeholder="Hotel / Airbnb" required />
-  <input id="accCity" placeholder="City" />
+      <div class="form-group">
+        <label>City</label>
+        <input id="accCity" placeholder="City" />
+      </div>
 
-  <label>Check-in</label>
-  <input id="accCheckIn" type="date" required />
-  <input id="accCheckInTime" type="time" required />
+      <div class="form-group">
+        <label>Check in</label>
+        <input id="accCheckInDate" type="date" required />
+        <input id="accCheckInTime" type="time" required />
+      </div>
 
-  <label>Check-out</label>
-  <input id="accCheckOut" type="date" required />
-  <input id="accCheckOutTime" type="time" required />
+      <div class="form-group">
+        <label>Check out</label>
+        <input id="accCheckOutDate" type="date" required />
+        <input id="accCheckOutTime" type="time" required />
+      </div>
 
-  <input id="accCost" type="number" placeholder="Total cost" required />
-  <input id="accCurrency" placeholder="Currency" required />
+      <div class="form-group">
+        <label>Cost</label>
+        <input id="accCost" type="number" />
+      </div>
 
-  <input id="accBookingCode" placeholder="Booking code (optional)" />
-  <input id="accBookingUrl" placeholder="Booking URL (optional)" />
+      <div class="form-group">
+        <label>Currency</label>
+        <input id="accCurrency" />
+      </div>
 
-  <br /><br />
+      <div class="form-group">
+        <label>Booking Code</label>
+        <input id="accBookingCode" placeholder="Confirmation Code" />
+        <input id="accBookingUrl" placeholder="Link" />
+      </div>
 
-  <button type="submit">Save</button>
-  <button type="button" id="cancel">Cancel</button>
-
+      <div class="actions">
+        <button type="button" class="secondary" id="cancelAccommodation">
+          Cancel
+        </button>
+        <button type="submit" class="primary">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
 </form>
 
 <script type="module" src="../js/editAccommodation.js"></script>
