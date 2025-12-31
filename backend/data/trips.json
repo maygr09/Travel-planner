@@ -53,6 +53,36 @@
             "bookingUrl": "",
             "cost": 98,
             "currencyCode": "GBP"
+          },
+          {
+            "id": "i1767196297893",
+            "type": "Flight",
+            "flightNumber": "AF16",
+            "from": "CDG",
+            "to": "EDI",
+            "departureDate": "2026-02-19",
+            "departureTime": "20:45",
+            "arrivalDate": "2026-02-19",
+            "arrivalTime": "21:35",
+            "confirmationCode": "",
+            "bookingUrl": "airfrance.com",
+            "cost": 145,
+            "currencyCode": "EUR"
+          },
+          {
+            "id": "i1767196338829",
+            "type": "Flight",
+            "flightNumber": "AF16",
+            "from": "CDG",
+            "to": "EDI",
+            "departureDate": "2026-02-19",
+            "departureTime": "20:45",
+            "arrivalDate": "2026-02-19",
+            "arrivalTime": "21:35",
+            "confirmationCode": "",
+            "bookingUrl": "airfrance.com",
+            "cost": 100,
+            "currencyCode": "USD"
           }
         ],
         "activities": [
@@ -60,26 +90,45 @@
             "id": "i1766896740839",
             "name": "Disneyland Paris",
             "cost": 225,
-            "currencyCode": "EUR"
+            "currencyCode": "EUR",
+            "startDate": "2026-02-18",
+            "startTime": "08:00",
+            "endDate": "2026-02-18",
+            "endTime": "21:30"
           },
           {
             "id": "i1767192955997",
             "name": "Free walking tour Paris",
             "confirmationCode": "A3619388",
             "cost": 40,
-            "currencyCode": "EUR"
+            "currencyCode": "EUR",
+            "startDate": "2026-02-19",
+            "startTime": "11:30",
+            "endDate": "2026-02-19",
+            "endTime": "14:00"
+          },
+          {
+            "id": "i1767195461279",
+            "name": "Torre Eiffel (caminando)",
+            "startDate": "2026-02-17",
+            "startTime": "18:00",
+            "endDate": "2026-02-17",
+            "endTime": "20:00",
+            "confirmationCode": "NA",
+            "cost": 1,
+            "currencyCode": "MXN"
           }
         ],
         "meals": [],
         "summary": {
           "breakdown": {
-            "transport": 2450,
+            "transport": 7490,
             "activities": 5830,
             "meals": 0,
             "accommodations": 14983.5
           },
-          "totalMXN": 23263.5,
-          "perPersonMXN": 7754.5
+          "totalMXN": 28303.5,
+          "perPersonMXN": 9434.5
         },
         "accommodations": [
           {

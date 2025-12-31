@@ -17,7 +17,9 @@ const fields = {
   name: document.getElementById('accName'),
   city: document.getElementById('accCity'),
   checkInDate: document.getElementById('accCheckIn'),
+  checkInTime: document.getElementById('accCheckInTime'),
   checkOutDate: document.getElementById('accCheckOut'),
+  checkOutTime: document.getElementById('accCheckOutTime'),
   cost: document.getElementById('accCost'),
   currencyCode: document.getElementById('accCurrency'),
   bookingCode: document.getElementById('accBookingCode'),
@@ -35,7 +37,9 @@ if (itemId) {
     fields.name.value = item.name || '';
     fields.city.value = item.city || '';
     fields.checkInDate.value = item.checkInDate || '';
+    fields.checkInTime.value = item.checkInTime || '';
     fields.checkOutDate.value = item.checkOutDate || '';
+    fields.checkOutTime.value = item.checkOutTime || '';
     fields.cost.value = item.cost || '';
     fields.currencyCode.value = item.currencyCode || '';
     fields.bookingCode.value = item.bookingCode || '';
@@ -52,13 +56,15 @@ form.addEventListener('submit', async (e) => {
     name: fields.name.value,
     city: fields.city.value,
     checkInDate: fields.checkInDate.value,
+    checkInTime: fields.checkInTime.value,
     checkOutDate: fields.checkOutDate.value,
+    checkOutTime: fields.checkOutTime.value,
     cost: Number(fields.cost.value),
     currencyCode: fields.currencyCode.value,
     bookingCode: fields.bookingCode.value,
     bookingUrl: fields.bookingUrl.value
   };
-  
+
     await updateItem({
       tripName,
       versionId,

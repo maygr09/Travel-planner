@@ -265,6 +265,7 @@ const renderActivities = () => {
 
     div.innerHTML = `
       <strong>${a.name}</strong><br/>
+      ${a.startDate} ${a.startTime} - ${a.endDate} ${a.endTime}<br/>
       ${a.cost} ${a.currencyCode}
       <br/>
       <button class="edit">Edit</button>
@@ -304,11 +305,15 @@ document.getElementById('addActivity')
   .addEventListener('click', async () => {
 
     const name = document.getElementById('activityName').value.trim();
+    const startDate = document.getElementById('activityStartDate').value.trim();
+    const startTime = document.getElementById('activityStartTime').value.trim();
+    const endDate = document.getElementById('activityEndDate').value.trim();
+    const endTime = document.getElementById('activityEndTime').value.trim();
     const confirmationCode = document.getElementById('activityConfirmationCode').value.trim();
     const cost = Number(document.getElementById('activityCost').value);
     const currencyCode = document.getElementById('activityCurrency').value.trim();
 
-    if (!name || !cost || !currencyCode) {
+    if (!name || !startDate || !startTime || !endDate || !endTime || !cost || !currencyCode) {
       alert('Missing required fields');
       return;
     }
@@ -319,6 +324,10 @@ document.getElementById('addActivity')
       itemType: 'activities',
       item: {
         name,
+        startDate,
+        startTime,
+        endDate,
+        endTime,
         confirmationCode,
         cost,
         currencyCode
@@ -328,6 +337,10 @@ document.getElementById('addActivity')
     currentVersion = version;
 
     document.getElementById('activityName').value = '';
+    document.getElementById('activityStartDate').value = '';
+    document.getElementById('activityStartTime').value = '';
+    document.getElementById('activityEndDate').value = '';
+    document.getElementById('activityEndTime').value = '';
     document.getElementById('activityConfirmationCode').value = '';
     document.getElementById('activityCost').value = '';
     document.getElementById('activityCurrency').value = '';
@@ -347,6 +360,7 @@ const renderMeals = () => {
 
     div.innerHTML = `
       <strong>${m.name}</strong><br/>
+      ${m.startDate} ${m.startTime} - ${m.endDate} ${m.endTime}<br/>
       ${m.cost} ${m.currencyCode}
       <br/>
       <button class="edit">Edit</button>
@@ -387,12 +401,16 @@ document.getElementById('addMeal')
   .addEventListener('click', async () => {
 
     const name = document.getElementById('mealName').value.trim();
+    const startDate = document.getElementById('mealStartDate').value.trim();
+    const startTime = document.getElementById('mealStartTime').value.trim();
+    const endDate = document.getElementById('mealEndDate').value.trim();
+    const endTime = document.getElementById('mealEndTime').value.trim();
     const confirmationCode = document.getElementById('mealConfirmationCode').value.trim();
     const bookingUrl = document.getElementById('mealBookingUrl').value.trim();
     const cost = Number(document.getElementById('mealCost').value);
     const currencyCode = document.getElementById('mealCurrency').value.trim();
 
-    if (!name) {
+    if (!name || !startDate || !startTime || !endDate || !endTime) {
       alert('Missing required fields');
       return;
     }
@@ -403,6 +421,10 @@ document.getElementById('addMeal')
       itemType: 'meals',
       item: {
         name,
+        startDate,
+        startTime,
+        endDate,
+        endTime,
         confirmationCode,
         bookingUrl,
         cost,
@@ -413,6 +435,10 @@ document.getElementById('addMeal')
     currentVersion = version;
 
     document.getElementById('mealName').value = '';
+    document.getElementById('mealStartDate').value = '';
+    document.getElementById('mealStartTime').value = '';
+    document.getElementById('mealEndDate').value = '';
+    document.getElementById('mealEndTime').value = '';
     document.getElementById('mealConfirmationCode').value = '';
     document.getElementById('mealBookingUrl').value = '';
     document.getElementById('mealCost').value = '';
@@ -438,7 +464,7 @@ const renderAccommodations = () => {
 
     div.innerHTML = `
       <strong>${a.name}</strong> (${a.city || ''})<br/>
-      ${a.checkInDate} → ${a.checkOutDate}<br/>
+      ${a.checkInDate} ${a.checkInTime} → ${a.checkOutDate} ${a.checkOutTime}<br/>
       ${a.cost} ${a.currencyCode}<br/>
       ${a.bookingCode ? `Code: ${a.bookingCode}<br/>` : ''}
       ${a.bookingUrl ? `<a href="${a.bookingUrl}" target="_blank">Booking</a><br/>` : ''}
@@ -482,13 +508,15 @@ document.getElementById('addAccommodation')
     const name = document.getElementById('accName').value.trim();
     const city = document.getElementById('accCity').value.trim();
     const checkInDate = document.getElementById('accCheckIn').value;
+    const checkInTime = document.getElementById('accCheckInTime').value;
     const checkOutDate = document.getElementById('accCheckOut').value;
+    const checkOutTime = document.getElementById('accCheckOutTime').value;
     const cost = Number(document.getElementById('accCost').value);
     const currencyCode = document.getElementById('accCurrency').value.trim();
     const bookingCode = document.getElementById('accBookingCode').value.trim();
     const bookingUrl = document.getElementById('accBookingUrl').value.trim();
 
-    if (!name || !checkInDate || !checkOutDate || !cost || !currencyCode) {
+    if (!name || !checkInDate || !checkInTime || !checkOutDate || !checkOutTime || !cost || !currencyCode) {
       alert('Missing required fields');
       return;
     }
@@ -501,7 +529,9 @@ document.getElementById('addAccommodation')
         name,
         city,
         checkInDate,
+        checkInTime,
         checkOutDate,
+        checkOutTime,
         cost,
         currencyCode,
         bookingCode,
@@ -514,7 +544,9 @@ document.getElementById('addAccommodation')
     document.getElementById('accName').value = '';
     document.getElementById('accCity').value = '';
     document.getElementById('accCheckIn').value = '';
+    document.getElementById('accCheckInTime').value = '';
     document.getElementById('accCheckOut').value = '';
+    document.getElementById('accCheckOutTime').value = '';
     document.getElementById('accCost').value = '';
     document.getElementById('accCurrency').value = '';
     document.getElementById('accBookingCode').value = '';

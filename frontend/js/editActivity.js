@@ -24,6 +24,10 @@ const loadActivity = async () => {
 
   // AUTOLLENADO
   document.getElementById('aName').value = activity.name || '';
+  document.getElementById('aStartDate').value = activity.startDate || '';
+  document.getElementById('aStartTime').value = activity.startTime || '';
+  document.getElementById('aEndDate').value = activity.endDate || '';
+  document.getElementById('aEndTime').value = activity.endTime || '';
   document.getElementById('aCost').value = activity.cost || '';
   document.getElementById('aCurrency').value = activity.currencyCode || '';
 };
@@ -40,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const updates = {
         name: document.getElementById('aName').value.trim(),
+        startDate: document.getElementById('aStartDate').value,
+        startTime: document.getElementById('aStartTime').value,
+        endDate: document.getElementById('aEndDate').value,
+        endTime: document.getElementById('aEndTime').value,
         cost: Number(document.getElementById('aCost').value),
         currencyCode: document.getElementById('aCurrency').value.trim()
       };
