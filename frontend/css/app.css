@@ -1,13 +1,13 @@
 .page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #979fb3, #7582c2);
+  background: 180deg, #42444a5e;
   padding: 40px;
   display: flex;
   justify-content: center;
 }
 
 .card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(161, 138, 109, 0.142);
   backdrop-filter: blur(10px);
   border-radius: 18px;
   padding: 24px;
@@ -32,3 +32,49 @@
   color: #000000;
 }
 
+.grid.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+button.primary {
+  background: #6366f1;
+  color: white;
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid #64748b;
+}
+
+button.danger {
+  background: #dc2626;
+}
+
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+#tripList, #searchResults {
+  display: grid;
+  gap: 12px;
+}
+
+.trip-row {
+  background: rgba(255,255,255,0.06);
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trip-row strong {
+  font-size: 15px;
+}
+
+.trip-actions button {
+  margin-left: 6px;
+}

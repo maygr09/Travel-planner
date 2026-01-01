@@ -3,14 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <title>Travel Planner</title>
+  <link rel="stylesheet" href="../css/app.css" />
 </head>
 <body>
-  <h1>✈️ Personal Travel Planner</h1>
 
-  <ul>
-    <li><a href="pages/createTrip.html">Create trip</a></li>
-    <li><a href="pages/editTrip.html">Edit trip</a></li>
-    <li><a href="pages/searchTrip.html">Search trips</a></li>
-  </ul>
+<div class="page">
+  <div class="card wide">
+
+    <h1>✈️ Travel Planner</h1>
+    <p class="subtitle">Plan, compare and organize your trips</p>
+
+    <!-- CREATE TRIP -->
+    <div class="section-card">
+      <h2>Create new trip</h2>
+
+      <div class="grid two">
+        <input id="newTripName" placeholder="Trip name" />
+        <input id="newTripPeople" type="number" placeholder="People" />
+      </div>
+
+      <button class="primary" id="createTrip">
+        Create trip
+      </button>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="section-card">
+      <h2>Search trips</h2>
+
+      <input id="searchInput" placeholder="Search by name" />
+      <button class="secondary" id="searchTrip">Search</button>
+
+      <div id="searchResults"></div>
+    </div>
+
+    <!-- ALL TRIPS -->
+    <div class="section-card">
+      <h2>All trips</h2>
+      <div id="tripList"></div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="../js/index.js"></script>
 </body>
 </html>
