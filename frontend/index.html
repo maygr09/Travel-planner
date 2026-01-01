@@ -3,49 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <title>Travel Planner</title>
-  <link rel="stylesheet" href="../css/app.css" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
 
 <div class="page">
-  <div class="card wide">
 
+  <header class="hero">
     <h1>✈️ Travel Planner</h1>
-    <p class="subtitle">Plan, compare and organize your trips</p>
+    <p>Plan your trips, compare versions, visualize your journey.</p>
+  </header>
 
-    <!-- CREATE TRIP -->
-    <div class="section-card">
-      <h2>Create new trip</h2>
-
-      <div class="grid two">
-        <input id="newTripName" placeholder="Trip name" />
-        <input id="newTripPeople" type="number" placeholder="People" />
-      </div>
-
-      <button class="primary" id="createTrip">
-        Create trip
-      </button>
-    </div>
+  <section class="cards">
 
     <!-- SEARCH -->
-    <div class="section-card">
-      <h2>Search trips</h2>
-
-      <input id="searchInput" placeholder="Search by name" />
-      <button class="secondary" id="searchTrip">Search</button>
-
-      <div id="searchResults"></div>
+    <div class="card">
+      <h2>🔍 Find a trip</h2>
+      <input id="searchTrip" placeholder="Trip name" />
+      <button id="searchBtn">Open trip</button>
     </div>
 
-    <!-- ALL TRIPS -->
-    <div class="section-card">
-      <h2>All trips</h2>
-      <div id="tripList"></div>
+    <!-- CREATE -->
+    <div class="card">
+      <h2>➕ Create a new trip</h2>
+      <p>Start planning a new adventure</p>
+      <button id="createBtn">Create trip</button>
     </div>
 
-  </div>
+  </section>
+
 </div>
 
-<script type="module" src="../js/index.js"></script>
+<script type="module" src="js/index.js"></script>
 </body>
 </html>
