@@ -400,7 +400,17 @@ const renderDayCards = () => {
   });
 };
 
+document.getElementById('editTripBtn')
+  ?.addEventListener('click', () => {
+    window.location.href =
+      `editTrip.html?trip=${encodeURIComponent(currentTrip.tripName)}`;
+  });
 
+document.getElementById('indexBtn')
+  ?.addEventListener('click', () => {
+    window.location.href =
+      `/frontend/`;
+  });
 
 
 /* ================= INIT ================= */
