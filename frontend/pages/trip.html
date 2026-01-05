@@ -3,107 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <title>Trip</title>
-  <link rel="stylesheet" href="../css/trip.css" />
-  <link rel="stylesheet" href="../css/styles.css" />
 
-  <style>
-    body { font-family: Arial; max-width: 900px; margin: auto; }
-    section { margin-bottom: 30px; }
-    .item { border-bottom: 1px solid #ddd; padding: 10px 0; }
-    a { color: blue; text-decoration: none; }
-  </style>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/trip.css" />
 </head>
 <body>
 
+<!-- ================= TOP BAR ================= -->
+<header class="trip-header">
+   <button id="indexBtn" class="secondary">Home</button>
+    <button id="editTripBtn" class="primary">✏️ Edit trip</button>
 
-<section>
+  <h1 id="tripTitle"></h1>
 
-<div class="grid two">
+  <div class="trip-meta">
+    <span id="people"></span>
+    <span id="activeVersion"></span>
+  </div>
+</header>
 
-<div class="trip-actions">
-  <button id="indexBtn" class="primary">
-    Home
-  </button>
-</div>
+<!-- ================= MAIN LAYOUT ================= -->
+<main class="trip-layout">
 
-<div class="trip-actions">
-  <button id="editTripBtn" class="primary">
-    ✏️ Edit trip
-  </button>
-</div>
-</div>
+  <!-- ===== TIMELINE / DAYS ===== -->
+  <section class="timeline-section">
+    <h2>Timeline</h2>
+    <div id="dayCards" class="day-cards"></div>
 
-</section>
+  </section>
 
-
-<h1 id="tripTitle">Trip</h1>
-<p id="people"></p>
-<p id="activeVersion"></p>
-
-<hr />
-
-<div class="layout">
-
-  <main class="main">
-    <section>
-      <h2>Timeline</h2>
-    <div id="timeline"></div>
-    </section>
-  </main>
-
-  <aside class="sidebar">
-    <section>
-      <h3><Summary></h3>
-      <div id="summaryCards"></div>
-    </section>
+  <!-- ===== SUMMARY ===== -->
+  <aside class="summary-section">
+    <h3>Summary</h3>
+    <div id="summaryCards"></div>
   </aside>
 
-</div>
+</main>
 
+<!-- ================= SCRIPT ================= -->
 <script type="module" src="../js/trip.js"></script>
-</body>
 
-
-<section>
-  <h2>Timeline</h2>
-  <div id="timeline"></div>
-</section>
-
-<section>
-  <h2>Summary</h2>
-
-  <div id="summaryCards" class="summary-grid"></div>
-</section>
-
-<section>
-  <h2>Daily plan</h2>
-  <div id="dayCards"></div>
-</section>
-
-
-<section>
-  <h2>Transports</h2>
-  <div id="transportList"></div>
-</section>
-
-<section>
-  <h2>Activities</h2>
-  <div id="activityList"></div>
-</section>
-
-<section>
-  <h2>Meals</h2>
-  <div id="mealList"></div>
-</section>
-
-<section>
-  <h2>Accommodation</h2>
-  <div id="accommodationList"></div>
-</section>
-
-<hr />
-
-
-<script type="module" src="../js/trip.js"></script>
 </body>
 </html>

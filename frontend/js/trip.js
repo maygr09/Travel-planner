@@ -1,10 +1,12 @@
+import { searchTrips } from './api.js';
+
+/* ================= ICONS ================= */
 const ICONS = {
   transport: '✈️',
   activity: '🎟️',
   meal: '🍽️',
   accommodation: '🏨'
 };
-import { searchTrips } from './api.js';
 
 /* ================= STATE ================= */
 let currentTrip = null;
@@ -31,12 +33,8 @@ const loadTrip = async () => {
   currentVersion = currentTrip.versions.find(v => v.isActive);
 
   renderHeader();
-  renderTransports();
-  renderActivities();
-  renderMeals();
-  renderAccommodations();
-  renderSummary();
-  renderTimeline();
+  setHeaderHeightVar();
+  renderSummaryCards();
   renderDayCards();
 };
 
@@ -44,362 +42,193 @@ const loadTrip = async () => {
 const renderHeader = () => {
   document.getElementById('tripTitle').textContent = currentTrip.tripName;
   document.getElementById('people').textContent =
-    `People: ${currentTrip.peopleCount}`;
+    `👥 ${currentTrip.peopleCount}`;
   document.getElementById('activeVersion').textContent =
-    `Version: ${currentVersion.name}`;
-};
-
-/* ================= TRANSPORTS ================= */
-const renderTransports = () => {
-  const list = document.getElementById('transportList');
-  list.innerHTML = '';
-
-  if (!currentVersion.transports.length) {
-    list.textContent = 'No transports';
-    return;
-  }
-
-  currentVersion.transports.forEach(t => {
-    const div = document.createElement('div');
-    div.className = 'item';
-
-    div.innerHTML = `
-      <strong>${t.type}</strong><br/>
-      ${t.from} → ${t.to}<br/>
-      ${t.departureDate} ${t.departureTime} →
-      ${t.arrivalDate} ${t.arrivalTime}<br/>
-      ${t.cost} ${t.currencyCode}<br/>
-      ${t.confirmationCode ? `Confirmation: ${t.confirmationCode}<br/>` : ''}
-      ${t.bookingUrl ? `<a href="${t.bookingUrl}" target="_blank">Booking</a>` : ''}
-    `;
-
-    list.appendChild(div);
-  });
-};
-
-/* ================= ACTIVITIES ================= */
-const renderActivities = () => {
-  const list = document.getElementById('activityList');
-  list.innerHTML = '';
-
-  if (!currentVersion.activities.length) {
-    list.textContent = 'No activities';
-    return;
-  }
-
-  currentVersion.activities.forEach(a => {
-    const div = document.createElement('div');
-    div.className = 'item';
-
-    div.innerHTML = `
-      <strong>${a.name}</strong><br/>
-      ${a.startDate} ${a.startTime} →
-      ${a.endDate} ${a.endTime}<br/>
-      ${a.cost} ${a.currencyCode}<br/>
-      ${a.confirmationCode ? `Confirmation: ${a.confirmationCode}<br/>` : ''}
-      ${a.bookingUrl ? `<a href="${a.bookingUrl}" target="_blank">Booking</a>` : ''}
-    `;
-
-    list.appendChild(div);
-  });
-};
-
-/* ================= MEALS ================= */
-const renderMeals = () => {
-  const list = document.getElementById('mealList');
-  list.innerHTML = '';
-
-  if (!currentVersion.meals.length) {
-    list.textContent = 'No meals';
-    return;
-  }
-
-  currentVersion.meals.forEach(m => {
-    const div = document.createElement('div');
-    div.className = 'item';
-
-    div.innerHTML = `
-      <strong>${m.name}</strong><br/>
-      ${m.startDate} ${m.startTime} →
-      ${m.endDate} ${m.endTime}<br/>
-      ${m.cost} ${m.currencyCode}<br/>
-      ${m.confirmationCode ? `Confirmation: ${m.confirmationCode}<br/>` : ''}
-      ${m.bookingUrl ? `<a href="${m.bookingUrl}" target="_blank">Booking</a>` : ''}
-    `;
-
-    list.appendChild(div);
-  });
-};
-
-/* ================= ACCOMMODATIONS ================= */
-
-const renderAccommodations = () => {
-  const list = document.getElementById('accommodationList');
-  list.innerHTML = '';
-
-  if (!currentVersion.accommodations.length) {
-    list.textContent = 'No accommodations';
-    return;
-  }
-
-  currentVersion.accommodations.forEach(acc => {
-    const div = document.createElement('div');
-    div.className = 'item';
-
-    div.innerHTML = `
-      <strong>${acc.name}</strong><br/> (${acc.city || ''})<br/>
-      ${acc.checkInDate} → ${acc.checkOutDate}<br/>
-      ${acc.cost} ${acc.currencyCode}<br/>
-      ${acc.bookingCode ? `Code: ${acc.bookingCode}<br/>` : ''}
-      ${acc.bookingUrl ? `<a href="${acc.bookingUrl}" target="_blank">Booking</a>` : ''}
-    `;
-
-    list.appendChild(div);
-  });
+    `📌 ${currentVersion.name}`;
 };
 
 /* ================= SUMMARY ================= */
-const renderSummary = () => {
+const renderSummaryCards = () => {
   const container = document.getElementById('summaryCards');
   if (!container) return;
 
   const s = currentVersion.summary || {};
-  container.innerHTML = '';
 
-  const cards = [
-    { label: 'Total MXN', value: s.totalMXN || 0 },
-    { label: 'Per person', value: s.perPersonMXN || 0 },
-    { label: 'Transports', value: currentVersion.transports.length },
-    { label: 'Activities', value: currentVersion.activities.length },
-    { label: 'Meals', value: currentVersion.meals.length },
-    { label: 'Accommodation', value: currentVersion.accommodations.length }
-  ];
-
-  cards.forEach(c => {
-    const div = document.createElement('div');
-    div.className = 'summary-card';
-    div.innerHTML = `
-      <strong>${c.value}</strong>
-      <span>${c.label}</span>
-    `;
-    container.appendChild(div);
-  });
+  container.innerHTML = `
+    <div class="summary-card">
+      <strong>Total</strong>
+      <span>${s.totalMXN || 0} MXN</span>
+    </div>
+    <div class="summary-card">
+      <strong>Per person</strong>
+      <span>${s.perPersonMXN || 0} MXN</span>
+    </div>
+    <div class="summary-card">
+      <strong>Transports</strong>
+      <span>${currentVersion.transports.length}</span>
+    </div>
+    <div class="summary-card">
+      <strong>Activities</strong>
+      <span>${currentVersion.activities.length}</span>
+    </div>
+    <div class="summary-card">
+      <strong>Meals</strong>
+      <span>${currentVersion.meals.length}</span>
+    </div>
+    <div class="summary-card">
+      <strong>Accommodation</strong>
+      <span>${currentVersion.accommodations.length}</span>
+    </div>
+  `;
 };
 
-
-
-/* ================= TIMELINE ================= */
-const normalizeDate = (dateStr) => {
-  if (!dateStr) return null;
-  return dateStr.split('T')[0];
-};
-
-const buildTimeline = () => {
-  const timeline = {};
-
-  const pushItem = (date, item) => {
-    if (!date) return;
-    if (!timeline[date]) timeline[date] = [];
-    timeline[date].push(item);
-  };
-
-  //  TRANSPORTS
-  currentVersion.transports.forEach(t => {
-    pushItem(normalizeDate(t.departureDate), {
-      type: 'transport',
-      data: t
-    });
-  });
-
-  //  ACTIVITIES
-  currentVersion.activities.forEach(a => {
-    pushItem(normalizeDate(a.startDate), {
-      type: 'activity',
-      data: a
-    });
-  });
-
-  //  MEALS
-  currentVersion.meals.forEach(m => {
-    pushItem(normalizeDate(m.startDate), {
-      type: 'meal',
-      data: m
-    });
-  });
-
-  //  ACCOMMODATIONS (día por día)
-  currentVersion.accommodations.forEach(acc => {
-    let current = new Date(acc.checkInDate);
-    const end = new Date(acc.checkOutDate);
-
-    while (current <= end) {
-      const dateStr = current.toISOString().split('T')[0];
-      pushItem(dateStr, {
-        type: 'accommodation',
-        data: acc
-      });
-      current.setDate(current.getDate() + 1);
-    }
-  });
-
-  return timeline;
-};
-
-const renderTimeline = () => {
-  const container = document.getElementById('timeline');
-  container.innerHTML = '';
-
+/* ================= EVENTS ================= */
+const collectEvents = () => {
   const events = [];
 
+  // TRANSPORTS
   currentVersion.transports.forEach(t => {
     if (t.departureDate && t.departureTime) {
       events.push({
-        type: 'transport',
         date: t.departureDate,
         time: t.departureTime,
-        title: `${t.type}: ${t.from} → ${t.to}`
-      });
-    }
-    if (t.arrivalDate && t.arrivalTime) {
-      events.push({
         type: 'transport',
-        date: t.arrivalDate,
-        time: t.arrivalTime,
-        title: `${t.type} Arrival: ${t.to}`
+        title: `${t.type}: ${t.from} → ${t.to}`,
+        cost: `${t.cost} ${t.currencyCode}`
       });
     }
+
+      if (t.arrivalDate && t.arrivalTime) {
+    events.push({
+      date: t.arrivalDate,
+      time: t.arrivalTime,
+      type: 'transport',
+      title: `${t.type}: Arrival in ${t.to}`,
+      cost: null
+    });
+  }
+
   });
 
+  // ACTIVITIES
   currentVersion.activities.forEach(a => {
     if (a.startDate && a.startTime) {
       events.push({
-        type: 'activity',
         date: a.startDate,
         time: a.startTime,
-        title: a.name
+        type: 'activity',
+        title: a.name,
+        cost: `${a.cost} ${a.currencyCode}`
       });
     }
   });
 
+  // MEALS
   currentVersion.meals.forEach(m => {
     if (m.startDate && m.startTime) {
       events.push({
-        type: 'meal',
         date: m.startDate,
         time: m.startTime,
-        title: m.name
+        type: 'meal',
+        title: m.name,
+        cost: `${m.cost} ${m.currencyCode}`
       });
     }
   });
 
+  // ACCOMMODATION (check-in)
   currentVersion.accommodations.forEach(a => {
-    if (a.checkInDate && a.checkInTime) {
+    if (a.checkInDate) {
       events.push({
-        type: 'accommodation',
         date: a.checkInDate,
         time: a.checkInTime,
-        title: `Check-in: ${a.name}`
-      });
-    }
-    if (a.checkOutDate && a.checkOutTime) {
-      events.push({
         type: 'accommodation',
-        date: a.checkOutDate,
-        time: a.checkOutTime,
-        title: `Check-out: ${a.name}`
+        title: `Check-in: ${a.name}`,
+        cost: `${a.cost} ${a.currencyCode}`
       });
     }
   });
 
-  if (!events.length) {
-    container.textContent = 'No events yet';
-    return;
-  }
-
-  events.sort((a, b) =>
-    `${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`)
-  );
-
-  let currentDay = null;
-  let dayDiv = null;
-
-  events.forEach(e => {
-    if (e.date !== currentDay) {
-      currentDay = e.date;
-      dayDiv = document.createElement('div');
-      dayDiv.className = 'day';
-      dayDiv.innerHTML = `<h3>${e.date}</h3>`;
-      container.appendChild(dayDiv);
-    }
-
-    const item = document.createElement('div');
-    item.className = `timeline-item ${e.type}`;
-    item.innerHTML = `
-      <span class="icon">${ICONS[e.type]}</span>
-      <div>
-        <strong>${e.title}</strong><br/>
-        <small>${e.time}</small>
-      </div>
-    `;
-
-    dayDiv.appendChild(item);
-  });
+  return events;
 };
 
+/* ================= GROUP BY DAY ================= */
+const groupEventsByDay = (events) => {
+  const days = {};
+
+  events.forEach(e => {
+    if (!days[e.date]) days[e.date] = [];
+    days[e.date].push(e);
+  });
+
+  Object.keys(days).forEach(date => {
+    days[date].sort((a, b) => a.time.localeCompare(b.time));
+  });
+
+  return days;
+};
+
+/* ================= DAY CARDS ================= */
 const renderDayCards = () => {
   const container = document.getElementById('dayCards');
   container.innerHTML = '';
 
-  const events = [];
+  const events = collectEvents();
+  const days = groupEventsByDay(events);
 
-  currentVersion.transports.forEach(t => {
-    if (t.departureDate && t.departureTime) {
-      events.push({ date: t.departureDate, time: t.departureTime, title: `${t.type}: ${t.from} → ${t.to}` });
+  const sortedDates = Object.keys(days).sort((a, b) => {
+    const toVal = s => {
+      const t = Date.parse(s);
+      if (!isNaN(t)) return t;
+      const n = Number(s);
+      return isNaN(n) ? String(s) : n;
+    };
+    const va = toVal(a);
+    const vb = toVal(b);
+    if (typeof va === 'string' || typeof vb === 'string') {
+      return String(va).localeCompare(String(vb));
     }
+    return va - vb;
   });
 
-  currentVersion.activities.forEach(a => {
-    if (a.startDate && a.startTime) {
-      events.push({ date: a.startDate, time: a.startTime, title: a.name });
-    }
-  });
+  if (!sortedDates.length) {
+    container.textContent = 'No itinerary yet';
+    return;
+  }
 
-  currentVersion.meals.forEach(m => {
-    if (m.startDate && m.startTime) {
-      events.push({ date: m.startDate, time: m.startTime, title: m.name });
-    }
-  });
-
-  currentVersion.accommodations.forEach(a => {
-    if (a.checkInDate) {
-      events.push({ date: a.checkInDate, time: '00:00', title: `Check-in: ${a.name}` });
-    }
-  });
-
-  const byDay = {};
-  events.forEach(e => {
-    if (!byDay[e.date]) byDay[e.date] = [];
-    byDay[e.date].push(e);
-  });
-
-  Object.keys(byDay).forEach(date => {
+  sortedDates.forEach((date, index) => {
+    const items = days[date];
     const card = document.createElement('div');
     card.className = 'day-card';
 
-    card.innerHTML = `<h3>${date}</h3>`;
+    card.innerHTML = `
+      <h3>Day ${index + 1} <span class ="muted">${date}</span></h3>
+      <div class="day-timeline"></div>
+    `;
 
-    byDay[date]
-      .sort((a, b) => a.time.localeCompare(b.time))
-      .forEach(e => {
-        const p = document.createElement('p');
-        p.textContent = `${e.time} — ${e.title}`;
-        card.appendChild(p);
-      });
+    const timeline = card.querySelector('.day-timeline');
+
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = `timeline-item ${item.type}`;
+
+      div.innerHTML = `
+        <span class="icon">${ICONS[item.type]}</span>
+        <div class="content">
+          <strong>${item.title}</strong>
+          ${item.time ? `<small>${item.time}</small>` : ''}
+          ${item.cost ? `<span class="cost">${item.cost}</span>` : ''}
+        </div>
+      `;
+
+      timeline.appendChild(div);
+    });
 
     container.appendChild(card);
   });
 };
 
+/* ================= NAV ================= */
 document.getElementById('editTripBtn')
   ?.addEventListener('click', () => {
     window.location.href =
@@ -408,9 +237,16 @@ document.getElementById('editTripBtn')
 
 document.getElementById('indexBtn')
   ?.addEventListener('click', () => {
-    window.location.href =
-      `/frontend/`;
+    window.location.href = `../index.html`;
   });
+
+  const setHeaderHeightVar = () => {
+  const header = document.querySelector('.trip-header');
+  if (!header) return;
+  document.documentElement.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`);
+};
+window.addEventListener('load', setHeaderHeightVar);
+window.addEventListener('resize', setHeaderHeightVar);
 
 
 /* ================= INIT ================= */

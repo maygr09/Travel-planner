@@ -86,6 +86,7 @@ form.addEventListener('submit', async (e) => {
       tripName,
       versionId,
       itemType: 'transports', 
+      itemId,
       updates: item
     });
   } else {

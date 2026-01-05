@@ -2,56 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Edit transport</title>
+  <title>Edit Transport</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/trip.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
 </head>
 <body>
 
-<link rel="stylesheet" href="../css/forms.css" />
-
 <form id="editForm">
-<div class="page">
-  <div class="card">
-    <h1>Edit Transport</h1>
+  <div class="page">
+    <div class="card">
+      <h1 id="title">Edit Transport</h1>
 
     <div class="form-group">
       <label>Type</label>
-      <input id="type" placeholder="Type (flight, train, bus, ferry)"/>
+      <input id="type" />
     </div>
 
     <div class="form-group">
-      <label>Service Number</label>
-      <input id="flightNumber" placeholder="Flight / service number" />
+      <label>Flight Number</label>
+      <input id="flightNumber" type="text" />
     </div>
 
     <div class="form-group">
       <label>From</label>
-      <input id="from" placeholder="From" required />
+      <input id="from" type="text" />
     </div>
 
     <div class="form-group">
       <label>To</label>
-      <input id="to" placeholder="To" required />
+      <input id="to" type="text" />
     </div>
 
     <div class="form-group">
-      <label>Departure</label>
-      <input id="departureDate" type="date" required />
-      <input id="departureTime" type="time" required />
-    </div>
-
-     <div class="form-group">
-      <label>Arrival</label>
-      <input id="arrivalDate" type="date" required />
-      <input id="arrivalTime" type="time" required />
+      <label>Departure Date</label>
+      <input id="departureDate" type="date" />
     </div>
 
     <div class="form-group">
-      <label>Booking Code</label>
-      <input id="confirmationCode" placeholder="Confirmation Code" />
-      <input id="bookingUrl" placeholder="Link" />
+      <label>Departure Time</label>
+      <input id="departureTime" type="time" />
     </div>
 
-    <div class="form-group">
+      <div class="form-group">
+      <label>Arrival Date</label>
+      <input id="arrivalDate" type="date" />
+    </div>
+
+      <div class="form-group">
+      <label>Arrival Time</label>
+      <input id="arrivalTime" type="time" />
+    </div>
+
+      <div class="form-group">
+      <label>Confirmation Code</label>
+      <input id="confirmationCode" type="text" />
+    </div>
+
+      <div class="form-group">
+      <label>Booking URL</label>
+      <input id="bookingUrl" type="url" />
+    </div>
+
+      <div class="form-group">
       <label>Cost</label>
       <input id="cost" type="number" />
     </div>
@@ -61,11 +74,14 @@
       <input id="currencyCode" />
     </div>
 
-
     <div class="actions">
-      <button type="button" class="secondary" id="cancelTransport">Cancel</button>
-      <button type="submit" class="primary" id="saveTransport">Save</button>
-    </div>
+      <button type="button" class="secondary" id="cancelTransport">
+          Cancel
+        </button>
+        <button type="submit" class="primary">
+          Save
+        </button>
+      </div>
   </div>
 </div>
 </form>

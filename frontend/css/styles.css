@@ -69,26 +69,6 @@ button {
   border-bottom: 1px solid #ddd;
 }
 
-.timeline-item {
-  display: flex;
-  gap: 10px;
-  padding: 8px 0;
-  border-left-width: 3px solid #ccc;
-  padding-left: 12px;
-  margin-left: 6px;
-}
-
-.timeline-item.transport { border-color: #2f6fb2; }
-.timeline-item.activity { border-color: #ff9800; }
-.timeline-item.meal { border-color: #3a7f4f; }
-.timeline-item.accommodation { border-color: #a03f7c; }
-
-.timeline-time {
-  font-weight: bold;
-  min-width: 60px;
-}
-
-
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -110,41 +90,19 @@ button {
   margin: 20px 0 10px;
 }
 
-.timeline-item {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  margin-bottom: 8px;
-  background: #f9f9f9;
-  border-radius: 8px;
+.day-card{
+  background:var(--card);
+  border-radius:calc(var(--radius) + 2px);
+  padding:1rem;
+  box-shadow:0 10px 30px var(--shadow);
+  border:1px solid rgba(0,0,0,0.04);
 }
 
-.timeline-item.transport { border-left: 4px solid #4a90e2; }
-.timeline-item.activity { border-left: 4px solid #e2a44c; }
-.timeline-item.meal { border-left: 4px solid #55ba12; }
-.timeline-item.accommodation { border-left: 4px solid #fe1369; }
-
-
-.day-card {
-  background: linear-gradient(
-    to bottom right,
-    #ffffff,
-    #f2f4f8
-  );
-  border-left: 5px solid #ccc;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
 
 .day-card h3 {
   color: #444;
 }
 
-.day-card:nth-child(odd) {
-  border-left-color: #4488d1;
-}
-.day-card:nth-child(even) {
-  border-left-color: #885bc0;
-}
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -154,4 +112,42 @@ body {
 
 .icon {
   font-size: 18px;
+}
+
+/* === Timeline items – neutral elegant === */
+.timeline-item{
+  display:flex;
+  gap:0.75rem;
+  align-items:flex-start;
+  padding:0.6rem;
+  margin-bottom:0.6rem;
+  border-radius:10px;
+  background:linear-gradient(180deg, rgba(207, 161, 120, 0.6), transparent);
+  border-left:4px solid rgba(168, 120, 99, 0.466);
+}
+
+.timeline-item .icon{
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(59,47,42,0.08);
+  color:var(--text);
+  font-size:1rem;
+  flex-shrink:0;
+}
+
+.timeline-item .content small{
+  display:block;
+  color:var(--muted);
+  font-size:0.85rem;
+}
+
+.timeline-item .content .cost{
+  display:block;
+  margin-top:0.2rem;
+  color:var(--muted);
+  font-weight:500;
 }

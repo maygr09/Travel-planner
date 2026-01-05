@@ -50,7 +50,7 @@
             "arrivalDate": "2026-02-19",
             "arrivalTime": "21:35",
             "confirmationCode": "",
-            "bookingUrl": "airfrance.com",
+            "bookingUrl": "https://wwws.airfrance.fr/splash",
             "cost": 145,
             "currencyCode": "EUR"
           },

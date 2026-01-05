@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Edit Activity</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/trip.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
 </head>
 <body>
 
-  <link rel="stylesheet" href="../css/forms.css" />
-
 <form id="editForm">
-<div class="page">
-  <div class="card">
-    <h1>Edit Activity</h1>
+  <div class="page">
+    <div class="card">
+      <h1 id="title">Edit Activity</h1>
 
     <div class="form-group">
       <label>Name</label>
@@ -38,11 +40,6 @@
     </div>
 
     <div class="form-group">
-      <label>Confirmation Code</label>
-      <input id="aConfirmationCode" />
-    </div>
-
-    <div class="form-group">
       <label>Cost</label>
       <input id="aCost" type="number" />
     </div>
@@ -53,14 +50,16 @@
     </div>
 
     <div class="actions">
-      <button type="button" class="secondary" id="cancelActivity">Cancel</button>
-      <button type="submit" class="primary" id="saveActivity">Save</button>
+       <button type="button" class="secondary" id="cancelActivity">
+          Cancel
+        </button>
+        <button id="saveActivity"type="button" class="primary">
+          Save
+        </button>
     </div>
   </div>
 </div>
 </form>
-
-
 
 <script type="module" src="../js/editActivity.js"></script>
 </body>
