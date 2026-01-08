@@ -1,118 +1,90 @@
-:root {
-  --pdf-title-font: "Snell Roundhand", "Arial", "Zapfino", cursive;
-  --pdf-body-font: "Avenir Next", "Avenir", "Helvetica Neue", Arial, sans-serif;
+/* ===== PDF BASE ===== */
+@page {
+  margin: 24mm;
 }
-/* Base */
-body.pdf {
-  font-family: var(--pdf-body-font);
-  color: #222;
-  background: rgb(202, 187, 175);
+
+
+* {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+body {
   margin: 0;
-  padding: 40px;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f7f3ef;
+  color: #3b2f2a;
 }
 
-section {
-  margin-bottom: 40px;
+.pdf-page {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Cover */
-.pdf-cover {
-  page-break-after: always;
-  text-align: center;
-  padding-top: 35vh;
-  margin-bottom: 60px;
+/* ===== COVER ===== */
+.cover {
+  margin-bottom: 48px;
 }
 
-.pdf-cover h1 {
-  font-family: var(--pdf-title-font);
+.cover h1 {
+  font-family: 'Playfair Display', serif;
   font-size: 42px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 
-.pdf-cover p {
-  font-family: var(--pdf-body-font);
-  font-size: 14px;
-  color: #666;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.cover .meta p {
+  font-size: 15px;
+  margin: 6px 0;
 }
 
-/* Summary */
-.pdf-summary h2,
-.pdf-itinerary h2 {
-  font-family: var(--pdf-body-font);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 14px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 6px;
+/* ===== ITINERARY ===== */
+.itinerary {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-
-#pdfSummaryGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 20px;
+/* ===== DAY CARD ===== */
+.day {
+  background: #f5efe9;
+  border-radius: 14px;
+  padding: 20px 24px;
+  page-break-inside: avoid;
 }
 
-.pdf-costs h2 {
-  margin-bottom: 6px;
-}
-
-.pdf-total {
-  font-size: 24px;
-  font-weight: 600;
+.day h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
   margin-bottom: 16px;
 }
 
-.pdf-cost-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ===== TABLE ===== */
+.day-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.pdf-cost-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px dotted #ccc;
+.day-table th {
+  text-align: left;
   font-size: 13px;
+  text-transform: uppercase;
+  color: #8b7b6b;
+  padding-bottom: 8px;
 }
 
-
-/* Days */
-.pdf-day {
-  margin-top: 30px;
+.day-table td {
+  padding: 8px 0;
+  font-size: 14px;
+  vertical-align: top;
 }
 
-.pdf-day h3 {
-  margin-bottom: 10px;
-}
-
-.pdf-day h2 {
-  font-size: 22px;
+.day-table .time {
+  width: 90px;
   font-weight: 500;
-  margin-bottom: 2px;
 }
 
-.pdf-date {
-  font-size: 12px;
-  color: #888;
-  margin-bottom: 12px;
-}
-
-.pdf-day p {
-  margin: 4px 0;
-  padding-left: 10px;
-}
-
-/* Print */
-@media print {
-  body {
-    padding: 20px;
-  }
+.activity {
+  background: #efe6dc;
+  border-radius: 10px;
+  padding: 10px 12px;
 }

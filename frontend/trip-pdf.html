@@ -4,21 +4,38 @@
   <meta charset="UTF-8" />
   <title>Trip PDF</title>
 
-  <link rel="stylesheet" href="../css/pdf.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/pdf.css" />
 </head>
-<body class="pdf">
-      <h1 id="tripTitle"></h1>
+<body>
 
-  <section>
-    <h2>Summary</h2>
-    <p>Total: <span id="summaryTotal"></span></p>
-  </section>
+<div class="pdf-page">
 
-  <section>
-    <h2>Itinerary</h2>
-    <div id="itinerary"></div>
-  </section>
+    <!-- ===== COVER ===== -->
+<section class="cover">
+  <h1 id="tripTitle"></h1>
+
+  <div class="meta">
+    <p><strong>Destination:</strong> <span id="destination"></span></p>
+    <p><strong>Period:</strong> <span id="period"></span></p>
+    <p><strong>Total budget:</strong> <span id="totalBudget"></span></p>
+  </div>
+</section>
+
+<section id="itinerary"></section>
+</div>
 
   <script type="module" src="./js/trip-pdf.js"></script>
+
+  <script>
+  window.onload = () => {
+    setTimeout(() => window.print(), 500);
+  };
+</script>
+
 </body>
 </html>
