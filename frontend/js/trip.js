@@ -240,6 +240,14 @@ document.getElementById('indexBtn')
     window.location.href = `../index.html`;
   });
 
+document.getElementById('exportPdfBtn')
+  ?.addEventListener('click', () => {
+    window.open(
+      `../trip-pdf.html?trip=${encodeURIComponent(currentTrip.tripName)}`,
+      '_blank'
+    );
+  });
+
   const setHeaderHeightVar = () => {
   const header = document.querySelector('.trip-header');
   if (!header) return;
