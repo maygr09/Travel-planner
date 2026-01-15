@@ -36,22 +36,22 @@
             "arrivalTime": "16:00",
             "cost": 0,
             "currencyCode": "MXN",
-            "confirmationCode": "",
+            "confirmationCode": "UUOKZG , MJUCHQ",
             "bookingUrl": ""
           },
           {
             "id": "i1767196297893",
             "type": "Flight",
-            "flightNumber": "AF16",
+            "flightNumber": "AF1886",
             "from": "CDG",
             "to": "EDI",
             "departureDate": "2026-02-19",
             "departureTime": "20:45",
             "arrivalDate": "2026-02-19",
             "arrivalTime": "21:35",
-            "confirmationCode": "",
+            "confirmationCode": "ZVM9VH",
             "bookingUrl": "https://wwws.airfrance.fr/splash",
-            "cost": 145,
+            "cost": 163,
             "currencyCode": "EUR"
           },
           {
@@ -102,7 +102,7 @@
           {
             "id": "i1767209847637",
             "type": "Flight",
-            "flightNumber": "AF16",
+            "flightNumber": "AF1687",
             "from": "EDI",
             "to": "CDG",
             "departureDate": "2026-02-24",
@@ -605,13 +605,13 @@
         ],
         "summary": {
           "breakdown": {
-            "transport": 8703,
+            "transport": 9099,
             "activities": 8280,
             "meals": 0,
             "accommodations": 14991
           },
-          "totalMXN": 31974,
-          "perPersonMXN": 10658
+          "totalMXN": 32370,
+          "perPersonMXN": 10790
         },
         "accommodations": [
           {
